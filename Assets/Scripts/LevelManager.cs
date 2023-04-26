@@ -16,6 +16,11 @@ public class LevelManager : MonoBehaviour
 
     private float timeStamp = 0;
 
+    void Start()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -56,16 +61,16 @@ public class LevelManager : MonoBehaviour
             switch (side)
             {
                 case 0: //top
-                    spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), 1.1f, 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), 1.1f, 0));
                     break;
                 case 1: //right
-                    spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(1.1f, UnityEngine.Random.Range(0f, 1f), 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(1.1f, UnityEngine.Random.Range(0f, 1f), 0));
                     break;
                 case 2: //bottom
-                    spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), -0.1f, 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), -0.1f, 0));
                     break;
                 case 3: //left
-                    spawnPos = Camera.main.ViewportToWorldPoint(new Vector3(-0.1f, UnityEngine.Random.Range(0f, 1f), 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(-0.1f, UnityEngine.Random.Range(0f, 1f), 0));
                     break;
             }
 
