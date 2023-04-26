@@ -18,12 +18,12 @@ public class EnemyWaves : MonoBehaviour
     {
         timeStamp += Time.deltaTime;
 
-        if(timeStamp >= 0 && timeStamp < 60) enemyWave(enemyPrefab, 10, 60);
-        if (timeStamp >= 60 && timeStamp < 120) enemyWave(enemyPrefab, 20, 60);
-        if (timeStamp >= 120 && timeStamp < 180) enemyWave(enemyPrefab, 30, 60);
+        if(timeStamp >= 0 && timeStamp < 60) enemyWave(enemyPrefab, 10);
+        if (timeStamp >= 60 && timeStamp < 120) enemyWave(enemyPrefab, 20);
+        if (timeStamp >= 120 && timeStamp < 180) enemyWave(enemyPrefab, 30);
     }
 
-    void enemyWave(GameObject enemy, int amountEnemies, int timeSeconds)
+    void enemyWave(GameObject enemy, int amountEnemies)
     {
         amountEnemies = amountEnemies - GameObject.FindGameObjectsWithTag("enemy").Length;
 
