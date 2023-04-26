@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public int hp = 100;
     public int speed = 1;
+    public int Level = 1;
+    public int EXP = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,16 @@ public class PlayerMovement : MonoBehaviour
         if (hp <= 0)
         {
 
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("EXP"))
+        {
+            other.gameObject.SetActive(false);
+            EXP++;
         }
 
     }
