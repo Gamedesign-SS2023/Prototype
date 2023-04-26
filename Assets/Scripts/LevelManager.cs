@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     [Header("Timer")]
     public TextMeshProUGUI timerText;
+    [Tooltip("Input needs to be in SECONDS")]
+    public int levelEnd;
 
     [Header("Enemy")]
     public GameObject enemyPrefab;
@@ -21,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
         setTimer(timeStamp);
         setLevel0(timeStamp);
+
+        if (timeStamp >= levelEnd) enabled = false; //add game ending
     }
 
     void setTimer(float timeStamp)
