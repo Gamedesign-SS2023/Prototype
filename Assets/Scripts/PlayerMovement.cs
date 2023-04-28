@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int hp = 100;
-    public int speed = 1;
+    public float hp = 100;
+    public float moveSpeed = 3;
     public int Level = 1;
-    public int EXP = 0;
+    public float EXP = 0;
+    Rigidbody2D rb;
+    private Vector2 moveDirection;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +25,24 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        transform.Translate(new Vector2(h, v)*speed*Time.deltaTime);
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
+        moveDirection = new Vector2(moveX, moveY).normalized;
+        //transform.Translate(new Vector2(moveX, moveY)*moveSpeed*Time.deltaTime);
         if (hp <= 0)
         {
 
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+    void Move()
+    {
+        rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
             EXP++;
         }
+       
 
     }
 }
