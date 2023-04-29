@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
 
     void enemyWave(GameObject enemy, int amountEnemies)
     {
-        amountEnemies = amountEnemies - GameObject.FindGameObjectsWithTag("enemy").Length;
+        amountEnemies = amountEnemies - GameObject.FindGameObjectsWithTag("Enemy").Length;
         
         for (int i = 0; i < amountEnemies; i++)
         {
