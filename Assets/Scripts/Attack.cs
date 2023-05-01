@@ -6,7 +6,6 @@ public class Attack : MonoBehaviour
 {
     public GameObject weapon;
     public float weaponSpeed;
-    public float lastFireTime;
     
     // Start is called before the first frame update
     void Start()

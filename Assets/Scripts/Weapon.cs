@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public float damage;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,8 @@ public class Weapon : MonoBehaviour
         
         if(collider.gameObject.tag == "Enemy")
         {
-            Destroy(collider.gameObject);
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+            enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

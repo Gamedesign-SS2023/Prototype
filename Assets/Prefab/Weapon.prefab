@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1338057089219181118}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,3 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a38d3155b7bd34429fe9afc66286e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
