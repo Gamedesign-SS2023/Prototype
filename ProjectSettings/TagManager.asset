@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EXP
   - Enemy
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Weapon
+    uniqueID: 3660321521
     locked: 0
