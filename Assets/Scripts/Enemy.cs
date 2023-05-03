@@ -52,16 +52,22 @@ public class Enemy : MonoBehaviour
         Debug.Log($"Health is now: {health}");
         if (health <= 0)
         {
-            //tot
+            Die();
         }
         
+    }
+
+    void Die()
+    {
+        GetComponent<LootBag>().InstantiateLoot(transform.position);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Die();
         }
 
     }
