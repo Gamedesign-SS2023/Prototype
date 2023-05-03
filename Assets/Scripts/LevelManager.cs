@@ -61,16 +61,16 @@ public class LevelManager : MonoBehaviour
             switch (side)
             {
                 case 0: //top
-                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), 1.1f, 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), 1.1f, 100f));
                     break;
                 case 1: //right
-                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(1.1f, UnityEngine.Random.Range(0f, 1f), 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(1.1f, UnityEngine.Random.Range(0f, 1f), 100f));
                     break;
                 case 2: //bottom
-                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), -0.1f, 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(UnityEngine.Random.Range(0f, 1f), -0.1f, 100f));
                     break;
                 case 3: //left
-                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(-0.1f, UnityEngine.Random.Range(0f, 1f), 0));
+                    spawnPos = UnityEngine.Camera.main.ViewportToWorldPoint(new Vector3(-0.1f, UnityEngine.Random.Range(0f, 1f), 100f));
                     break;
             }
 
