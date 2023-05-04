@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 {
    // public static event Action<Enemy> OnEnemyKilled;
     [SerializeField] float health, maxhealth, moveSpeed;
+    public float damage;
     Rigidbody2D rb;
     Transform target;
     Vector2 moveDirection;
@@ -63,12 +64,4 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Die();
-        }
-
-    }
 }

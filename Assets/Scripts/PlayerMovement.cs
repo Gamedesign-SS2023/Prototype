@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        if(EXP == 10){
+            LevelUp();
+        }
+
     }
 
     private void FixedUpdate()
@@ -52,7 +56,31 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
             EXP++;
         }
-       
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(other.GetComponent<Enemy>().damage);
+        }
+    }
+
+    public void LevelUp()
+    {
+        Level++;
+        EXP = 0;
+    }
+
+    public void TakeDamage(float damageAmount)
+    {;
+        hp -= damageAmount;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
 
     }
+
 }
