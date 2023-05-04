@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float EXP = 0;
     Rigidbody2D rb;
     private Vector2 moveDirection;
-
+    [SerializeField] private AudioSource pickUpExp;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EXP"))
         {
+            pickUpExp.Play();
             other.gameObject.SetActive(false);
             EXP++;
         }

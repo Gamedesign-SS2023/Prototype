@@ -6,7 +6,8 @@ public class Attack : MonoBehaviour
 {
     public GameObject weapon;
     public float weaponSpeed;
-    
+    [SerializeField] private AudioSource shootingSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class Attack : MonoBehaviour
         GameObject closestEnemy = enemies[0];
         for (int i = 1; i < enemies.Length; i++)
         {
+            shootingSound.Play();
             float distanceNew = Vector2.Distance(enemies[i].transform.position, transform.position);
             float distanceOld = Vector2.Distance(closestEnemy.transform.position, transform.position);
             if (distanceNew < distanceOld) closestEnemy = enemies[i];
