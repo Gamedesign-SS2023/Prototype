@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class LevelManager : MonoBehaviour
 
     [Header("Enemy")]
     public GameObject enemyPrefab;
+
+    [Header("EXP")]
+    public Slider expSlider;
+    public TextMeshProUGUI level;
 
     private float timeStamp = 0;
 
@@ -76,5 +81,16 @@ public class LevelManager : MonoBehaviour
 
             Instantiate(enemy, spawnPos, Quaternion.identity);
         }
+    }
+
+    public void updateExperienceBar(int currentEXP, int nextLevelUp)
+    {
+        expSlider.maxValue = nextLevelUp;
+        expSlider.value = currentEXP;
+    }
+
+    public void setLevelText(int lvl)
+    {
+        level.text = "LVL" + lvl;
     }
 }

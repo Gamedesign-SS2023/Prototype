@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    [Header("Player Stats")]
     public float hp = 100;
     public float moveSpeed = 3;
-    public int Level = 1;
-    public float EXP = 0;
+    public int level = 1;
+    public int EXP = 0;
+    public LevelManager lvlmanager;
+
     Rigidbody2D rb;
     private Vector2 moveDirection;
+
+    [Header("Audio")]
     [SerializeField] private AudioSource pickUpExp;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        lvlmanager.updateExperienceBar(EXP, 10);
+        lvlmanager.setLevelText(level);
     }
 
     // Update is called once per frame
@@ -56,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             pickUpExp.Play();
             other.gameObject.SetActive(false);
             EXP++;
+            lvlmanager.updateExperienceBar(EXP,10);
         }
 
         if (other.gameObject.CompareTag("Enemy"))
@@ -66,8 +75,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void LevelUp()
     {
-        Level++;
+        level++;
         EXP = 0;
+        lvlmanager.setLevelText(level);
+        lvlmanager.updateExperienceBar(EXP, 10);
     }
 
     public void TakeDamage(float damageAmount)
