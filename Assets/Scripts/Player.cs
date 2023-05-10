@@ -63,8 +63,7 @@ public class Player : MonoBehaviour
         {
             pickUpExp.Play();
             other.gameObject.SetActive(false);
-            EXP++;
-            lvlmanager.updateExperienceBar(EXP,10);
+            updateExp(false);
         }
 
         if (other.gameObject.CompareTag("Enemy"))
@@ -76,9 +75,8 @@ public class Player : MonoBehaviour
     public void LevelUp()
     {
         level++;
-        EXP = 0;
+        updateExp(true);
         lvlmanager.setLevelText(level);
-        lvlmanager.updateExperienceBar(EXP, 10);
     }
 
     public void TakeDamage(float damageAmount)
@@ -93,6 +91,17 @@ public class Player : MonoBehaviour
     public void Die()
     {
 
+    }
+
+    public void updateExp(bool reset)
+    {
+        if (reset)
+        {
+            EXP = 0;
+        } else {
+            EXP++;
+        }
+        lvlmanager.updateExperienceBar(EXP, 10);
     }
 
 }
