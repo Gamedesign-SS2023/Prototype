@@ -130,6 +130,7 @@ MonoBehaviour:
   maxhealth: 10
   moveSpeed: 3
   damage: 10
+  damagePre: {fileID: 5254632703802421620, guid: a2a5e8f3ba3f61a409b5af7a4cb7b150, type: 3}
 --- !u!50 &7288106600911067857
 Rigidbody2D:
   serializedVersion: 4

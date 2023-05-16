@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     Transform target;
     Vector2 moveDirection;
     GameObject loot;
-
+    public GameObject damagePre;
 
     private void Awake()
     {
@@ -58,6 +58,23 @@ public class Enemy : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Weapon"))
+        {
+            float damageNum = collision.GetComponent<Weapon>().GetDamage();
+            //string weapontype = collision.GetComponent<Weapon>().GetType();
+            CreateDamage(damageNum.ToString());
+
+        }
+    }
+
+    void CreateDamage(string damageNumstr)
+    {
+       GameObject damagenum = ObjectPool.Instance.Get(damagePre);
+       damagenum.transform.position = transform.position;
+       damagenum.GetComponent<Damage>().Init(damageNumstr);
+    }
     void Die()
     {
         GetComponent<LootBag>().InstantiateLoot(transform.position);
