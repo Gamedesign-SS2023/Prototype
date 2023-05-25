@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public int level = 1;
     public int EXP = 0;
     public LevelManager lvlmanager;
+    private bool isdead = false;
+    public Animator animator;
 
     Rigidbody2D rb;
     private Vector2 moveDirection;
@@ -36,6 +38,9 @@ public class Player : MonoBehaviour
         moveDirection.x = Input.GetAxis("Horizontal");
         moveDirection.y = Input.GetAxis("Vertical");
         rb.velocity = moveDirection * moveSpeed;
+        animator.SetFloat("Horizontal",moveDirection.x);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+
         if (hp <= 0)
         {
 
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
+
         level++;
         updateExp(true);
         lvlmanager.setLevelText(level);
@@ -80,16 +86,16 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {;
+        if (isdead)
+        {
+            return;
+        }
         hp -= damageAmount;
         if (hp <= 0)
         {
-            Die();
+            GetComponent<CharacterGameOver>().GameOver();
+            isdead = true;
         }
-    }
-
-    public void Die()
-    {
-
     }
 
     public void updateExp(bool reset)
