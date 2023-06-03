@@ -7,6 +7,10 @@ TagManager:
   - EXP
   - Enemy
   - Weapon
+  - MesserGabel
+  - Barrel
+  - CoinDrop
+  - HpDrop
   layers:
   - Default
   - TransparentFX

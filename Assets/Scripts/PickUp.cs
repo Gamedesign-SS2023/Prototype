@@ -5,13 +5,23 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] int healamount;
+    [SerializeField] int coinamount;
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Player p = collision.GetComponent<Player>();
-        if(p != null)
+        if (gameObject.tag == "HpDrop") {
+            Player p = collision.GetComponent<Player>();
+            if (p != null)
+            {
+                p.Heal(healamount);
+                Destroy(gameObject);
+            }
+        }
+        if(gameObject.tag == "CoinDrop")
         {
-            p.Heal(healamount);
+            Debug.Log("TestCoin");
             Destroy(gameObject);
+            //Coins erhöhen
         }
     }
+
 }

@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour, Damageable
     [SerializeField] float moveSpeed;
     [SerializeField] int damage;
 
-
     Rigidbody2D rb;
     Transform target;
     GameObject targetObject;
@@ -73,6 +72,13 @@ public class Enemy : MonoBehaviour, Damageable
             CreateDamage(damageNum.ToString());
 
         }
+        if (collision.CompareTag("MesserGabel"))
+        {
+            float damageNum = collision.GetComponent<throwingMesserProjectile>().damage;
+            //string weapontype = collision.GetComponent<Weapon>().GetType();
+            CreateDamage(damageNum.ToString());
+
+        }
     }
 
     void CreateDamage(string damageNumstr)
@@ -83,7 +89,6 @@ public class Enemy : MonoBehaviour, Damageable
     }
     void Die()
     {
-        
         GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }

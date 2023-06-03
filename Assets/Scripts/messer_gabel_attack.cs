@@ -7,6 +7,7 @@ public class messer_gabel_attack : MonoBehaviour
 {
     [SerializeField] float timetoattack;
     float timer;
+    [SerializeField] private AudioSource throwingsound;
 
     [SerializeField] GameObject messerGabelPrefab;
     Player player;
@@ -31,6 +32,7 @@ public class messer_gabel_attack : MonoBehaviour
     {
         GameObject throwingMesser=Instantiate(messerGabelPrefab);
         throwingMesser.transform.position = transform.position;
+        throwingsound.Play();
         throwingMesser.GetComponent<throwingMesserProjectile>().SetDirection(player.lastHorizontalVector,player.lastVertictalVector);
     }
 }
