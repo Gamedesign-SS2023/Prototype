@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e1eb2511ac88749869cb27e5fe8baa, type: 3}
-  m_Name: EXP
+  m_Name: New Loot
   m_EditorClassIdentifier: 
-  lootSprite: {fileID: 1192935706, guid: cd74d94e0a2e6744b9d42e87b0cf7c99, type: 3}
-  lootName: EXP
-  dropChance: 100
+  lootSprite: {fileID: -474897784, guid: cd74d94e0a2e6744b9d42e87b0cf7c99, type: 3}
+  lootName: Hp
+  dropChance: 50

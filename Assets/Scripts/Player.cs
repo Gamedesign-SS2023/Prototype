@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,20 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Player Stats")]
-    public float hp = 100;
-    public float moveSpeed = 3;
+    [SerializeField] public int hp;
+    [SerializeField] public int maxhp;
+    [SerializeField] public float moveSpeed = 3;
     public int level = 1;
     public int EXP = 0;
     public LevelManager lvlmanager;
     private bool isdead = false;
     public Animator animator;
+    public float lastHorizontalVector;
+    public float lastVertictalVector;
+    [SerializeField] HpBar hpbar;
 
     Rigidbody2D rb;
-    private Vector2 moveDirection;
+    private Vector3 moveDirection;
 
     [Header("Audio")]
     [SerializeField] private AudioSource pickUpExp;
@@ -23,6 +28,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        moveDirection = new Vector3();
     }
 
     // Start is called before the first frame update
@@ -30,6 +36,7 @@ public class Player : MonoBehaviour
     {
         lvlmanager.updateExperienceBar(EXP, 10);
         lvlmanager.setLevelText(level);
+        hp = maxhp;
     }
 
     // Update is called once per frame
@@ -37,28 +44,25 @@ public class Player : MonoBehaviour
     {
         moveDirection.x = Input.GetAxis("Horizontal");
         moveDirection.y = Input.GetAxis("Vertical");
+
+        if (moveDirection.x != 0)
+        {
+            lastHorizontalVector = moveDirection.x;
+        }
+        if (moveDirection.y != 0)
+        {
+            lastVertictalVector = moveDirection.y;
+        }
+
         rb.velocity = moveDirection * moveSpeed;
         animator.SetFloat("Horizontal",moveDirection.x);
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
-        if (hp <= 0)
-        {
-
-        }
 
         if(EXP == 10){
             LevelUp();
         }
 
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-    }
-    void Move()
-    {
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -68,11 +72,6 @@ public class Player : MonoBehaviour
             pickUpExp.Play();
             other.gameObject.SetActive(false);
             updateExp(false);
-        }
-
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage(other.GetComponent<Enemy>().damage);
         }
     }
 
@@ -84,8 +83,9 @@ public class Player : MonoBehaviour
         lvlmanager.setLevelText(level);
     }
 
-    public void TakeDamage(float damageAmount)
-    {;
+    public void TakeDamage(int damageAmount)
+    {
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         if (isdead)
         {
             return;
@@ -96,6 +96,21 @@ public class Player : MonoBehaviour
             GetComponent<CharacterGameOver>().GameOver();
             isdead = true;
         }
+        hpbar.SetState(hp, maxhp);
+    }
+
+    public void Heal(int healamount)
+    {
+        if(hp <= 0)
+        {
+            return;
+        }
+        hp += healamount;
+        if (hp > maxhp)
+        {
+            hp = maxhp;
+        }
+        hpbar.SetState(hp, maxhp);
     }
 
     public void updateExp(bool reset)

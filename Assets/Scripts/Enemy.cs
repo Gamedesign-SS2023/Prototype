@@ -4,58 +4,64 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, Damageable
 {
-   // public static event Action<Enemy> OnEnemyKilled;
-    [SerializeField] float health, maxhealth, moveSpeed;
-    public float damage;
+    // public static event Action<Enemy> OnEnemyKilled;
+    //Attribute vom Enemy
+    [SerializeField] float health;
+    [SerializeField] float maxhealth;
+    [SerializeField] float moveSpeed;
+    [SerializeField] int damage;
+
+
     Rigidbody2D rb;
     Transform target;
-    Vector2 moveDirection;
-    GameObject loot;
+    GameObject targetObject;
+    Player player;
     public GameObject damagePre;
+
+
+
+
 
     private void Awake()
     {
         rb= GetComponent<Rigidbody2D>();
+        target = GameObject.Find("Player").transform;
+        targetObject = target.gameObject;
     }
 
     private void Start()
     {
         health = maxhealth;
-        target = GameObject.Find("Player").transform;
+    
     }
-
-    private void Update()
-    {
-        if (target)
-        {
-            Vector3 direction = (target.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-            moveDirection = direction;
-        }
-    }
-
     private void FixedUpdate()
     {
-        if (target)
-        {
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+        Vector3 direction = (target.position - transform.position).normalized;
+        rb.velocity=direction*moveSpeed;
+    }
 
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject == targetObject)
+        {
+            if (player==null)
+            {
+                player=targetObject.GetComponent<Player>();
+            }
+            player.TakeDamage(damage);
         }
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(int damageAmount)
     {
-        Debug.Log($"Damage Amount: {damageAmount}");
         health -= damageAmount;
-        Debug.Log($"Health is now: {health}");
         if (health <= 0)
         {
             Die();
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,8 +83,8 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
+        
         GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
-
 }
