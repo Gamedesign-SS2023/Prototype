@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdc66117ae27ee4691f64144bcd285b, type: 3}
+  m_Name: Niedlichkeit_Unlock
+  m_EditorClassIdentifier: 
+  UpgradeType: 2
+  Name: Niedlichkeit_Unlock
+  icon: {fileID: 21300000, guid: 7e7e2a61fe9c5214aae314e761b73877, type: 3}
+  WeaponData: {fileID: 11400000, guid: 2e5c6492bd6e30d45a1bab9de2117bea, type: 2}

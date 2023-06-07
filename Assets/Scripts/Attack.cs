@@ -7,17 +7,25 @@ public class Attack : MonoBehaviour
     public GameObject weapon;
     public float weaponSpeed;
     [SerializeField] private AudioSource shootingSound;
+    [SerializeField] float timetoattack;
+    float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("autoAttack", 0, 1);
+        //InvokeRepeating("autoAttack", 0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (timer < timetoattack)
+        {
+            timer += Time.deltaTime;
+            return;
+        }
+        timer = 0;
+        autoAttack();
     }
 
     void autoAttack()
@@ -39,7 +47,8 @@ public class Attack : MonoBehaviour
         GameObject projectile = Instantiate(weapon, transform.position, transform.rotation);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
-        Vector2 direction = (closestEnemy.transform.position - transform.position).normalized;
+        Vector2 direction = (closestEnemy.transform.position - transform.position);
         rb.velocity = new Vector2(direction.x, direction.y) * weaponSpeed;
+
     }
 }

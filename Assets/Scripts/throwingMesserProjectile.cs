@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class throwingMesserProjectile : MonoBehaviour
 {
     Vector3 direction;
     [SerializeField ]float speed;
     [SerializeField] public int damage;
+    public float timeToLive = 3;
 
     public void SetDirection(float x,float y)
     {
@@ -19,9 +21,9 @@ public class throwingMesserProjectile : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
+
         transform.position += direction * speed*Time.deltaTime;
         if (Time.frameCount % 6 == 0)
         {
@@ -36,6 +38,12 @@ public class throwingMesserProjectile : MonoBehaviour
                 }
             }
         }
+        timeToLive -= Time.deltaTime;
+        if(timeToLive < 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
     void OnTriggerEnter2D(Collider2D collider)
     {

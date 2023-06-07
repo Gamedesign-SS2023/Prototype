@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class messer_gabel_attack : MonoBehaviour
+public class messer_gabel_attack : WeaponBase
 {
-    [SerializeField] float timetoattack;
-    float timer;
     [SerializeField] private AudioSource throwingsound;
-
+    [SerializeField] float spread = 0.5f;
     [SerializeField] GameObject messerGabelPrefab;
     Player player;
 
@@ -17,22 +15,26 @@ public class messer_gabel_attack : MonoBehaviour
         player = GetComponentInParent<Player>();
     }
 
-    private void Update()
+    public override void Attack()
     {
-        if (timer < timetoattack)
-        {
-            timer += Time.deltaTime;
-            return;
-        }
-        timer = 0;
-        SpawnMesser();
-    }
 
-    private void SpawnMesser()
-    {
-        GameObject throwingMesser=Instantiate(messerGabelPrefab);
-        throwingMesser.transform.position = transform.position;
-        throwingsound.Play();
-        throwingMesser.GetComponent<throwingMesserProjectile>().SetDirection(player.lastHorizontalVector,player.lastVertictalVector);
+        for (int i = 0; i < stats.numberOfAttacks; i++)
+        {
+            GameObject throwingMesser = Instantiate(messerGabelPrefab);
+            Vector3 Newknifepos = transform.position;
+            if (stats.numberOfAttacks > 1)
+            {
+                Newknifepos.y -= (spread * (stats.numberOfAttacks-1)) / 2;
+                Newknifepos.y += i * spread;
+            }
+            
+
+            throwingMesser.transform.position = Newknifepos;
+            throwingMesserProjectile throwingMesserProjectile = throwingMesser.GetComponent<throwingMesserProjectile>();
+            throwingsound.Play();
+            throwingMesserProjectile.SetDirection(player.lastHorizontalVector, 0f);
+            throwingMesserProjectile.damage = stats.damage;
+        }
+        
     }
 }

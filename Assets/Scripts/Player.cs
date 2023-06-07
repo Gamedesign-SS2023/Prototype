@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [Header("Player Stats")]
+    
     [SerializeField] public int hp;
     [SerializeField] public int maxhp;
     [SerializeField] public float moveSpeed = 3;
@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
     public float lastHorizontalVector;
     public float lastVertictalVector;
     [SerializeField] HpBar hpbar;
+    [SerializeField] LevelUpPanelManager leveluppanelmanager;
+    WeaponManager weaponmanager;
+
+    public List<UpgradeData> upgrades;
+    public List<UpgradeData> selectedUpgrades;
+    [SerializeField] public List<UpgradeData> aquiredUpgrades;
 
     Rigidbody2D rb;
     private Vector3 moveDirection;
@@ -29,6 +35,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         moveDirection = new Vector3();
+        weaponmanager= GetComponent<WeaponManager>();
     }
 
     // Start is called before the first frame update
@@ -59,8 +66,8 @@ public class Player : MonoBehaviour
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
 
-        if(EXP == 10){
-            LevelUp();
+        if(EXP >= lvlmanager.expSlider.maxValue){
+            LevelUp(); 
         }
 
     }
@@ -77,7 +84,14 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
+        if (selectedUpgrades == null)
+        {
+            selectedUpgrades=new List<UpgradeData>();
+        }
+        selectedUpgrades.Clear();
+        selectedUpgrades.AddRange(GetUpgrades(3));
 
+        leveluppanelmanager.OpenPanel(selectedUpgrades);
         level++;
         updateExp(true);
         lvlmanager.setLevelText(level);
@@ -85,7 +99,6 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         if (isdead)
         {
             return;
@@ -124,4 +137,51 @@ public class Player : MonoBehaviour
         lvlmanager.updateExperienceBar(EXP, 10);
     }
 
+    public List<UpgradeData> GetUpgrades(int count)
+    {
+        List<UpgradeData> upgradeList = new List<UpgradeData>();
+
+        if(count > upgrades.Count)
+        {
+            count = upgrades.Count;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+        }
+
+        return upgradeList;
+    }
+
+    public void Upgrade(int selectedUpgradeID)
+    {
+        UpgradeData upgradeData = selectedUpgrades[selectedUpgradeID];
+
+        if(aquiredUpgrades== null)
+        {
+            aquiredUpgrades = new List<UpgradeData>();
+        }
+
+        switch (upgradeData.UpgradeType)
+        {   
+            case UpgradeType.WeaponUnlock:
+                weaponmanager.AddWeapon(upgradeData.WeaponData);
+                break;
+            case UpgradeType.WeaponUpgrade:
+                weaponmanager.UpgradeWeapon(upgradeData);
+                break;
+            case UpgradeType.ItemUnlock:
+                break;
+            case UpgradeType.ItemUpgrade:
+                break;
+        }
+        aquiredUpgrades.Add(upgradeData);
+        upgrades.Remove(upgradeData);
+    }
+
+    public void AddUpgradesIntoListOfAvailableUpgrades(List<UpgradeData> upgradestoAdd)
+    {
+        upgrades.AddRange(upgradestoAdd);
+    }
 }
