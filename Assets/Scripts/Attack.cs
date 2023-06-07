@@ -6,6 +6,7 @@ public class Attack : MonoBehaviour
 {
     public GameObject weapon;
     public float weaponSpeed;
+    public float cooldown;
     [SerializeField] private AudioSource shootingSound;
     [SerializeField] float timetoattack;
     float timer;
