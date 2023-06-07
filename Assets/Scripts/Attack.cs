@@ -6,12 +6,13 @@ public class Attack : MonoBehaviour
 {
     public GameObject weapon;
     public float weaponSpeed;
+    public float cooldown;
     [SerializeField] private AudioSource shootingSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("autoAttack", 0, 1);
+        InvokeRepeating("autoAttack", 0, cooldown);
     }
 
     // Update is called once per frame
