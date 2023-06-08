@@ -10,5 +10,7 @@ public class CharacterGameOver : MonoBehaviour
         Debug.Log("Game Over");
         GetComponent<Player>().enabled = false;
         gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
+
     }
 }
