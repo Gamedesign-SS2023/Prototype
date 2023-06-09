@@ -20,7 +20,7 @@ public class WeaponStats
     public void Sum(WeaponStats weaponUpgradeStats)
     {
         this.damage+=weaponUpgradeStats.damage;
-        this.timeToAttack+=weaponUpgradeStats.timeToAttack;
+        this.timeToAttack-=weaponUpgradeStats.timeToAttack;
         this.numberOfAttacks+=weaponUpgradeStats.numberOfAttacks;
     }
 }

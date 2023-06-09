@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7187759243540111069}
   - component: {fileID: -5943763074619525352}
   m_Layer: 0
-  m_Name: Messer_Prefab
+  m_Name: MesserGabel
   m_TagString: MesserGabel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

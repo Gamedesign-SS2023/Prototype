@@ -13,8 +13,20 @@ public class Damage : MonoBehaviour
         ChangeAlpha();
     }
 
-    public void Init(string damage)
+    public void Init(string damage,int type)
     {
+        if(type == 0)//normal
+        {
+            text.color = Color.white;
+        }
+        else if(type == 1)//Pacifist
+        {
+            text.color = Color.green;
+        }
+        else if (type == 2)//Genocide
+        {
+            text.color = Color.red;
+        }
         text.text = damage;
         alpha = 1;
     }

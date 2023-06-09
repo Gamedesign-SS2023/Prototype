@@ -6,6 +6,7 @@ public abstract class WeaponBase : MonoBehaviour
     public WeaponData WeaponData;
     public float timer;
     public WeaponStats stats;
+    
 
     public void Update()
     {
@@ -14,6 +15,19 @@ public abstract class WeaponBase : MonoBehaviour
         {
             Attack();
             timer = stats.timeToAttack;
+        }
+    }
+
+    public void ApplyDamage(Collider2D[] colliders)
+    {
+        //int damage = GetDamage();
+        for(int i = 0; i < colliders.Length; i++)
+        {
+            Damageable d = colliders[i].GetComponent<Damageable>();
+            if(d != null)
+            {
+                d.TakeDamage(stats.damage);
+            }
         }
     }
 
@@ -28,4 +42,6 @@ public abstract class WeaponBase : MonoBehaviour
     {
         stats.Sum(upgradeData.WeaponUpgradeStats);
     }
+
+    
 }

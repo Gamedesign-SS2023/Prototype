@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +10,8 @@ public class throwingMesserProjectile : MonoBehaviour
     [SerializeField ]float speed;
     [SerializeField] public int damage;
     public float timeToLive = 3;
+   
+  
 
     public void SetDirection(float x,float y)
     {
@@ -28,11 +31,12 @@ public class throwingMesserProjectile : MonoBehaviour
         if (Time.frameCount % 6 == 0)
         {
             Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, 0.7f);
+
             foreach (Collider2D c in hit)
             {
                 Damageable d = c.GetComponent<Damageable>();
                 if (d != null)
-                {
+                { 
                     d.TakeDamage(damage);
                     Destroy(gameObject);
                 }

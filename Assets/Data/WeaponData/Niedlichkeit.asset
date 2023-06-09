@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Niedlichkeit
   stats:
-    damage: 99
+    damage: 500
     timeToAttack: 0.5
+    numberOfAttacks: 1
   weaponBasePrefab: {fileID: 3428955611393552453, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
   upgrades:
   - {fileID: 11400000, guid: 64acbd13a56d13f4b8f6fd88cf3c6f89, type: 2}

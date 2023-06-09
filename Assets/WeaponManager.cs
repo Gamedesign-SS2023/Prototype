@@ -16,7 +16,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void Start()
     {
-        //AddWeapon(startingweapon);
+        AddWeapon(startingweapon);
     }
 
     public void AddWeapon(WeaponData weaponData)

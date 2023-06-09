@@ -69,23 +69,23 @@ public class Enemy : MonoBehaviour, Damageable
         {
             float damageNum = collision.GetComponent<Weapon>().GetDamage();
             //string weapontype = collision.GetComponent<Weapon>().GetType();
-            CreateDamage(damageNum.ToString());
+            CreateDamage(damageNum.ToString(),0);
 
         }
         if (collision.CompareTag("MesserGabel"))
         {
             float damageNum = collision.GetComponent<throwingMesserProjectile>().damage;
             //string weapontype = collision.GetComponent<Weapon>().GetType();
-            CreateDamage(damageNum.ToString());
+            CreateDamage(damageNum.ToString(),2);
 
         }
     }
 
-    void CreateDamage(string damageNumstr)
+    void CreateDamage(string damageNumstr,int type)
     {
        GameObject damagenum = ObjectPool.Instance.Get(damagePre);
        damagenum.transform.position = transform.position;
-       damagenum.GetComponent<Damage>().Init(damageNumstr);
+       damagenum.GetComponent<Damage>().Init(damageNumstr,type);
     }
     void Die()
     {
