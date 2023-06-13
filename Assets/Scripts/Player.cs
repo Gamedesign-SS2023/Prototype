@@ -6,30 +6,33 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    
+    [Header("Stats")]
     [SerializeField] public int hp;
     [SerializeField] public int maxhp;
     [SerializeField] public float moveSpeed = 3;
     public int level = 1;
     public int EXP = 0;
+    [SerializeField] HpBar hpbar;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource pickUpExp;
+
+    [Header("Backend")]
     public LevelManager lvlmanager;
-    private bool isdead = false;
     public Animator animator;
     public float lastHorizontalVector;
     public float lastVertictalVector;
-    [SerializeField] HpBar hpbar;
     [SerializeField] LevelUpPanelManager leveluppanelmanager;
     WeaponManager weaponmanager;
 
+    [Header("Upgrades")]
     public List<UpgradeData> upgrades;
     public List<UpgradeData> selectedUpgrades;
     [SerializeField] public List<UpgradeData> aquiredUpgrades;
 
     Rigidbody2D rb;
     private Vector3 moveDirection;
-
-    [Header("Audio")]
-    [SerializeField] private AudioSource pickUpExp;
+    private bool isdead = false;
 
     private void Awake()
     {

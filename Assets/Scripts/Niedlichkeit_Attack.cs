@@ -24,6 +24,7 @@ public class Niedlichkeit_Attack : WeaponBase
             Damageable d = hit[i].GetComponent<Damageable>();
             if(d != null)
             {
+                GameObject.Find("CutenessHit").GetComponent<AudioSource>().Play();
                 d.TakeDamage(stats.damage);
             }
         }

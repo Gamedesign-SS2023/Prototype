@@ -53,6 +53,7 @@ public class throwingMesserProjectile : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy")
         {
+            GameObject.Find("KnifeForkHit").GetComponent<AudioSource>().Play();
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage);
             enemy.CreateDamage(damage.ToString(), 0);
