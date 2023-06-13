@@ -79152,7 +79152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponObjectContainer: {fileID: 1917685733}
-  startingweapon: {fileID: 11400000, guid: 2e5c6492bd6e30d45a1bab9de2117bea, type: 2}
+  startingweapon: {fileID: 11400000, guid: 1372079e0840e3b49b38456ce2301bd0, type: 2}
 --- !u!61 &1917685725
 BoxCollider2D:
   m_ObjectHideFlags: 0
