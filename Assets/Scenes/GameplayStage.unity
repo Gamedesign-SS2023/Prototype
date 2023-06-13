@@ -45809,11 +45809,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 819760487305645297, guid: ace195d8c79a134408aaf9577237b3be, type: 3}
     - target: {fileID: 2198438802970082224, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: cooldown
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198438802970082224, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2198438802970082224, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
       propertyPath: timetoattack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198438802970082224, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: shootingSound
+      value: 
+      objectReference: {fileID: 1917685735}
+    - target: {fileID: 2198438802970082225, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198438802970082225, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9305a6719989341efb63f177f16102ab, type: 3}
+    - target: {fileID: 2198438802970082225, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2198438802970082226, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
@@ -70337,7 +70357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7815a1271486d2c4886db239e027b560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMessage: {fileID: 400707192851561971, guid: 148d9603bc734dc4f943227123d3fcab, type: 3}
 --- !u!4 &1700023466
 Transform:
   m_ObjectHideFlags: 0
@@ -78495,6 +78514,11 @@ BoxCollider2D:
 --- !u!4 &1917685733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2198438802970082231, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+  m_PrefabInstance: {fileID: 1114488271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1917685735 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2198438802970082225, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
   m_PrefabInstance: {fileID: 1114488271}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918336670
