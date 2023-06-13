@@ -10,8 +10,8 @@ public class throwingMesserProjectile : MonoBehaviour
     [SerializeField ]float speed;
     [SerializeField] public int damage;
     public float timeToLive = 3;
-   
-  
+
+
 
     public void SetDirection(float x,float y)
     {
@@ -55,6 +55,7 @@ public class throwingMesserProjectile : MonoBehaviour
         {
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage);
+            enemy.CreateDamage(damage.ToString(), 0);
             Destroy(gameObject);
         }
     }

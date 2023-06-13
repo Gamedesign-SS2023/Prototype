@@ -166,11 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001c08d17accad7438f14e6c0a6c7bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 8359208092210842748, guid: f23bef4a772f25e4e9446bd6e6ece2da, type: 3}
-  weaponSpeed: 8
-  cooldown: 0
+  weapon: {fileID: 819760487305645297, guid: ace195d8c79a134408aaf9577237b3be, type: 3}
+  cooldown: 1.2
   shootingSound: {fileID: 2198438802970082225}
-  timetoattack: 0
+  timetoattack: 1
 --- !u!82 &2198438802970082225
 AudioSource:
   m_ObjectHideFlags: 0
@@ -181,7 +180,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9305a6719989341efb63f177f16102ab, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -18,10 +18,7 @@ public class Enemy : MonoBehaviour, Damageable
     GameObject targetObject;
     Player player;
     public GameObject damagePre;
-
-
-
-
+    public AudioSource defaultDamage;
 
     private void Awake()
     {
@@ -65,12 +62,22 @@ public class Enemy : MonoBehaviour, Damageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("hit");
+        if (collision.CompareTag("Weapon"))
+        {
+            //defaultDamage.Play();
+            defaultDamage.Play();
+        }
+    }
+
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if(collision.CompareTag("Weapon"))
         {
             float damageNum = collision.GetComponent<Weapon>().GetDamage();
             //string weapontype = collision.GetComponent<Weapon>().GetType();
             CreateDamage(damageNum.ToString(),0);
-
         }
         if (collision.CompareTag("MesserGabel"))
         {
@@ -80,12 +87,14 @@ public class Enemy : MonoBehaviour, Damageable
 
         }
     }
+    */
 
-    void CreateDamage(string damageNumstr,int type)
+    public void CreateDamage(string damageNumstr,int type)
     {
-       GameObject damagenum = ObjectPool.Instance.Get(damagePre);
-       damagenum.transform.position = transform.position;
-       damagenum.GetComponent<Damage>().Init(damageNumstr,type);
+        GameObject damagenum = ObjectPool.Instance.Get(damagePre);
+        damagenum.transform.position = transform.position;
+        damagenum.GetComponent<Damage>().Init(damageNumstr,type);
+
     }
     void Die()
     {
