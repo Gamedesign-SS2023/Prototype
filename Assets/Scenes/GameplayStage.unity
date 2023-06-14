@@ -17873,11 +17873,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3428955611393552453, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
       propertyPath: m_Name
-      value: wpn_Niedlichkeit
+      value: wpn_cuteness
       objectReference: {fileID: 0}
     - target: {fileID: 3428955611393552453, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9001034340993006688, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
       propertyPath: m_RootOrder
@@ -18080,7 +18080,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1185163378}
         m_TargetAssemblyTypeName: LevelUpPanelManager, Assembly-CSharp
-        m_MethodName: Upgrade
+        m_MethodName: Select
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18141,6 +18141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1298368992}
+  upgradeName: {fileID: 1164505199}
 --- !u!1001 &447934964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20664,11 +20665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455428, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: m_Name
-      value: wpn_messer_gabel
+      value: wpn_knifefork
       objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455428, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30abc16b4776824d89149fea57d627d, type: 3}
@@ -49335,6 +49336,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1803985383}
+  upgradebuttons:
+  - {fileID: 1799450953}
+  - {fileID: 447748168}
+  - {fileID: 2030795202}
+  powerUps:
+  - {fileID: 11400000, guid: 4eb983e073d0e8943983d35da0549069, type: 2}
+  - {fileID: 11400000, guid: b7a7a6be2393d4344b7e8dc4715c6336, type: 2}
+  - {fileID: 11400000, guid: a8e4da01aed8b7e42813718c426cd1eb, type: 2}
+  - {fileID: 11400000, guid: 6e8c9874e9d93f54ca5ece42056854b9, type: 2}
+  optionPrefab: {fileID: 1036928446052080763, guid: 91ba7c2c11ac0f14da0738cd0d5cd931, type: 3}
 --- !u!114 &1185163379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75290,6 +75301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 953441339}
+  upgradeName: {fileID: 1772621702}
 --- !u!1001 &1800476299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83395,7 +83407,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1185163378}
         m_TargetAssemblyTypeName: LevelUpPanelManager, Assembly-CSharp
-        m_MethodName: Upgrade
+        m_MethodName: Select
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -83456,6 +83468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1217925998}
+  upgradeName: {fileID: 960284518}
 --- !u!1001 &2033479823
 PrefabInstance:
   m_ObjectHideFlags: 0

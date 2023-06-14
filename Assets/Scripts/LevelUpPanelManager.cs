@@ -66,10 +66,7 @@ public class LevelUpPanelManager : MonoBehaviour
   
     public void Select(int pressed)
     {
-        Debug.Log(powerUps[pressed].upgradeName);
-
         int lvl = 0;
-        GameObject weaponObject;
 
         switch (powerUps[pressed].upgradeName)
         {
@@ -108,8 +105,6 @@ public class LevelUpPanelManager : MonoBehaviour
                 {
                     cuteness.unlock();
                 }
-                
-                //Debug.Log(GameObject.Find("wpn_cuteness"));
                 break;
             case "Messer und Gabel":
 
@@ -123,8 +118,6 @@ public class LevelUpPanelManager : MonoBehaviour
                 {
                     knifefork.unlock();
                 }
-                
-                //GameObject.Find("wpn_knifefork").SetActive(true);
                 break;
         }
 
