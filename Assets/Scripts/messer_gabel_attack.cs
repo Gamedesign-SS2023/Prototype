@@ -32,7 +32,7 @@ public class messer_gabel_attack : WeaponBase
             throwingMesser.transform.position = Newknifepos;
             throwingMesserProjectile throwingMesserProjectile = throwingMesser.GetComponent<throwingMesserProjectile>();
             throwingsound.Play();
-            throwingMesserProjectile.SetDirection(player.lastHorizontalVector, 0f);
+            throwingMesserProjectile.SetDirection(player.lastHorizontalCoupledVector, player.lastVertictalCoupledVector);
             throwingMesserProjectile.damage = stats.damage;
         }
         

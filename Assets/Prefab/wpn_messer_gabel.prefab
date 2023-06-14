@@ -51,6 +51,8 @@ MonoBehaviour:
     damage: 0
     timeToAttack: 0
     numberOfAttacks: 0
+  vectorofattack: {x: 0, y: 0}
+  attackDirection: 3
   throwingsound: {fileID: 1920540345709455425}
   spread: 0.75
   messerGabelPrefab: {fileID: 4568779773820344668, guid: f5282d16f05e9c24086c7b3f27b60254, type: 3}

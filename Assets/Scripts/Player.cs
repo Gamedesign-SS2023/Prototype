@@ -7,9 +7,21 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Stats")]
+<<<<<<< HEAD
     [SerializeField] public float hp;
     [SerializeField] public float maxhp;
     [SerializeField] public float moveSpeed = 3;
+=======
+    [SerializeField] public int hp;
+    [SerializeField] public int maxhp;
+    [SerializeField] public float moveSpeed = 3f;
+
+    [HideInInspector] public float lastHorizontalDeCoupledVector;
+    [HideInInspector] public float lastVertictalDeCoupledVector;
+    [HideInInspector] public float lastHorizontalCoupledVector;
+    [HideInInspector] public float lastVertictalCoupledVector;
+
+>>>>>>> 540cb7266577666f97abad2bb67b706ac2ceba17
     public int level = 1;
     public int EXP = 0;
     [SerializeField] HpBar hpbar;
@@ -20,8 +32,7 @@ public class Player : MonoBehaviour
     [Header("Backend")]
     public LevelManager lvlmanager;
     public Animator animator;
-    public float lastHorizontalVector;
-    public float lastVertictalVector;
+
     [SerializeField] LevelUpPanelManager leveluppanelmanager;
     WeaponManager weaponmanager;
 
@@ -39,6 +50,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         moveDirection = new Vector3();
         weaponmanager= GetComponent<WeaponManager>();
+        
     }
 
     // Start is called before the first frame update
@@ -47,6 +59,12 @@ public class Player : MonoBehaviour
         lvlmanager.updateExperienceBar(EXP, 10);
         lvlmanager.setLevelText(level);
         hp = maxhp;
+
+        lastHorizontalDeCoupledVector = -1f;
+        lastVertictalDeCoupledVector = 1f;
+
+        lastHorizontalCoupledVector = -1f;
+        lastVertictalCoupledVector = 1f;
     }
 
     // Update is called once per frame
@@ -68,13 +86,20 @@ public class Player : MonoBehaviour
         moveDirection.x = Input.GetAxis("Horizontal");
         moveDirection.y = Input.GetAxis("Vertical");
 
+        if(moveDirection.x != 0 || moveDirection.y != 0)
+        {
+            lastHorizontalCoupledVector = moveDirection.x;
+            lastVertictalCoupledVector = moveDirection.y;
+        }
+
+
         if (moveDirection.x != 0)
         {
-            lastHorizontalVector = moveDirection.x;
+            lastHorizontalDeCoupledVector = moveDirection.x;
         }
         if (moveDirection.y != 0)
         {
-            lastVertictalVector = moveDirection.y;
+            lastVertictalDeCoupledVector = moveDirection.y;
         }
 
         rb.velocity = moveDirection * moveSpeed;

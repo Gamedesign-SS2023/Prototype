@@ -15,13 +15,25 @@ public class throwingMesserProjectile : MonoBehaviour
 
     public void SetDirection(float x,float y)
     {
-        direction = new Vector3(x,y);
         if (x < 0)
         {
-            Vector3 scale = transform.localScale;
+            /*Vector3 scale = transform.localScale;
             scale.x = scale.x * -1;
-            transform.localScale = scale;
+            transform.localScale = scale;*/
+            x = -1f;
+        }else if(x > 0){
+            x = 1f;
         }
+
+        if (y < 0)
+        {
+            y = -1f;
+        }else if(y > 0){
+            y = 1f;
+        }
+
+        direction = new Vector3(x,y);
+
     }
 
     private void Update()
