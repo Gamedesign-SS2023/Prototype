@@ -15,14 +15,24 @@ public abstract class WeaponBase : MonoBehaviour
 
     //public WeaponData WeaponData;
     public float timer;
-    public WeaponStats stats;
+    //public float cooldown;
+    //public WeaponStats stats;
     public Vector2 vectorofattack;
     [SerializeField] DirectionOfAttack attackDirection;
     public bool unlocked = false;
 
+    public int damage;
+    public float timeToAttack;
+    public int numberOfAttacks;
+
     private void Awake()
     {
         playerMove = GetComponent<Player>();
+    }
+
+    private void Start()
+    {
+        //InvokeRepeating("Attack", 0, cooldown);
     }
 
     public void unlock()
@@ -32,17 +42,17 @@ public abstract class WeaponBase : MonoBehaviour
 
     public void Update()
     {
-        //InvokeRepeating("autoAttack", 0, timeToAttack);
+        //InvokeRepeating("Attack", 0, cooldown);
+        
         if(unlocked)
         {
             timer -= Time.deltaTime;
             if (timer < 0f)
             {
                 Attack();
-                timer = stats.timeToAttack;
+                timer = timeToAttack;
             }
         }
-        
     }
 
     /*
@@ -68,12 +78,12 @@ public abstract class WeaponBase : MonoBehaviour
     }
     */
     public abstract void Attack();
-
+    /*
     public void Upgrade(UpgradeData upgradeData)
     {
         stats.Sum(upgradeData.WeaponUpgradeStats);
     }
-
+    */
     public void UpdateVectorOfAttack()
     {
         if(attackDirection == DirectionOfAttack.None)

@@ -15,7 +15,8 @@ public class Niedlichkeit_Attack : WeaponBase
         Destroy(prefab, ttl);
     }
     public override void Attack()
-    { 
+    {
+        Debug.Log("hello");
         GameObject spawnniedlichkeit = Instantiate(prefab);
         spawnniedlichkeit.transform.position= transform.position;
         spawnniedlichkeit.transform.parent = transform;
@@ -26,7 +27,7 @@ public class Niedlichkeit_Attack : WeaponBase
             if(d != null)
             {
                 GameObject.Find("CutenessHit").GetComponent<AudioSource>().Play();
-                d.TakeDamage(stats.damage);
+                d.TakeDamage(damage);
             }
         }
     }

@@ -13,29 +13,27 @@ public class messer_gabel_attack : WeaponBase
 
     private void Awake()
     {
-        enabled = false;
         player = GetComponentInParent<Player>();
     }
 
     public override void Attack()
     {
-
-        for (int i = 0; i < stats.numberOfAttacks; i++)
+        Debug.Log("hi");
+        for (int i = 0; i < numberOfAttacks; i++)
         {
             GameObject throwingMesser = Instantiate(messerGabelPrefab);
             Vector3 Newknifepos = transform.position;
-            if (stats.numberOfAttacks > 1)
+            if (numberOfAttacks > 1)
             {
-                Newknifepos.y -= (spread * (stats.numberOfAttacks-1)) / 2;
+                Newknifepos.y -= (spread * (numberOfAttacks-1)) / 2;
                 Newknifepos.y += i * spread;
             }
             
-
             throwingMesser.transform.position = Newknifepos;
             throwingMesserProjectile throwingMesserProjectile = throwingMesser.GetComponent<throwingMesserProjectile>();
             throwingsound.Play();
             throwingMesserProjectile.SetDirection(player.lastHorizontalCoupledVector, player.lastVertictalCoupledVector);
-            throwingMesserProjectile.damage = stats.damage;
+            throwingMesserProjectile.damage = damage;
         }
         
     }
