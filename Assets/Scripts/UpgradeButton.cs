@@ -11,6 +11,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] Image icon;
     public TextMeshProUGUI upgradeName;
     public TextMeshProUGUI upgradeDesc;
+    public TextMeshProUGUI upgradeLVL;
 
     /*
     public void Set(UpgradeData upgradeData)
@@ -34,7 +35,7 @@ public class UpgradeButton : MonoBehaviour
             switch (upgradeData.upgradeName)
             {
                 case "Schleim":
-                    lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL;
+                    lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL+1;
                     break;
                 case "Niedlichkeit":
                     lvl = GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().weaponLVL;
@@ -58,6 +59,14 @@ public class UpgradeButton : MonoBehaviour
                 case 3:
                     upgradeDesc.text = upgradeData.descLVL3;
                     break;
+            }
+
+            if(lvl == 0)
+            {
+                upgradeLVL.text = "Unlock";
+            } else
+            {
+                upgradeLVL.text = "LVL"+lvl.ToString();
             }
         }
     }
