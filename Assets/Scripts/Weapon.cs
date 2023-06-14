@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour
 {
     public int damage;
     public string weaponType;
+    public int weaponLVL;
+    int hits;
     
     // Start is called before the first frame update
     void Start()
@@ -24,10 +26,21 @@ public class Weapon : MonoBehaviour
         if (collider.gameObject.tag == "Enemy")
         {
             GameObject.Find("SlimeHit").GetComponent<AudioSource>().Play();
+
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+            if(weaponLVL >= 2)
+            {
+                damage += 20;
+            }
             enemy.TakeDamage(damage);
             enemy.CreateDamage(damage.ToString(), 0);
-            Destroy(gameObject);
+
+            //if not lvl3 then set hits to 2 to destroy gameobject upon first hit
+            hits = (weaponLVL == 3) ? hits++ : hits + 2;
+            if (hits == 2)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     

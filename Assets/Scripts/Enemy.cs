@@ -72,6 +72,8 @@ public class Enemy : MonoBehaviour, Damageable
 
         health -= damageAmount;
 
+        //CreateDamage(damage.ToString(), 0);
+
         if (health <= 0)
         {
             Die();

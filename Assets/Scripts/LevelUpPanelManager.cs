@@ -104,6 +104,12 @@ public class LevelUpPanelManager : MonoBehaviour
             case "Schleim":
                 GameObject.Find("Player").GetComponent<Attack>().weaponLVL++;
                 lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL;
+
+                if(lvl == 1)
+                {
+                    GameObject.Find("Player").GetComponent<Attack>().cooldown -= 0.2f;
+                }
+
                 break;
 
             case "Niedlichkeit":

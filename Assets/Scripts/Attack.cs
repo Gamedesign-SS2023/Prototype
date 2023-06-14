@@ -36,20 +36,34 @@ public class Attack : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length == 0) return; //don't attack if there are no enemies around
 
-        GameObject closestEnemy = enemies[0];
+        List<GameObject> closestEnemy = new List<GameObject>();
+        closestEnemy.Add(enemies[0]);
+
         for (int i = 1; i < enemies.Length; i++)
         {
             float distanceNew = Vector2.Distance(enemies[i].transform.position, transform.position);
-            float distanceOld = Vector2.Distance(closestEnemy.transform.position, transform.position);
-            if (distanceNew < distanceOld) closestEnemy = enemies[i];
+            float distanceOld = Vector2.Distance(closestEnemy[0].transform.position, transform.position);
+            if (distanceNew < distanceOld) closestEnemy.Insert(0, enemies[i]);
         }
 
         shootingSound.Play();
 
-        // shoot projectile
-        GameObject projectile = Instantiate(weapon, transform.position, transform.rotation);
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        //shoot n projectiles per lvl
+        for(int i = 0; i<=weaponLVL;i++)
+        {
+            if(closestEnemy.Count > weaponLVL)
+            {
+                shootProjectile(closestEnemy[i]);
+            }
+        }
+    }
 
+    void shootProjectile(GameObject closestEnemy)
+    {
+        GameObject projectile = Instantiate(weapon, transform.position, transform.rotation);
+        projectile.GetComponent<Weapon>().weaponLVL = weaponLVL;
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         Vector2 direction = (closestEnemy.transform.position - transform.position);
         //rb.velocity = new Vector2(direction.x, direction.y) * weaponSpeed;
         rb.velocity = new Vector2(direction.x, direction.y);
