@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public int damage;
     public string weaponType;
     public int weaponLVL;
-    int hits;
+    [SerializeField] int hits;
     
     // Start is called before the first frame update
     void Start()
@@ -30,13 +30,15 @@ public class Weapon : MonoBehaviour
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             if(weaponLVL >= 2)
             {
-                damage += 20;
+                enemy.TakeDamage(damage+20);
+            } else
+            {
+                enemy.TakeDamage(damage);
             }
-            enemy.TakeDamage(damage);
             enemy.CreateDamage(damage.ToString(), 0);
 
             //if not lvl3 then set hits to 2 to destroy gameobject upon first hit
-            hits = (weaponLVL == 3) ? hits++ : hits + 2;
+            hits = (weaponLVL == 3) ? hits + 1 : hits + 2;
             if (hits == 2)
             {
                 Destroy(gameObject);

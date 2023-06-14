@@ -12,6 +12,8 @@ public class LevelUpPanelManager : MonoBehaviour
     //Player player;
     public List<PowerUps> powerUps;
     public GameObject optionPrefab;
+    public AudioSource popUpSound;
+    public AudioSource clickSound;
 
     private void Awake()
     {
@@ -66,6 +68,8 @@ public class LevelUpPanelManager : MonoBehaviour
   
     public void Select(int pressed)
     {
+        clickSound.Play();
+
         int lvl = 0;
 
         switch (powerUps[pressed].upgradeName)

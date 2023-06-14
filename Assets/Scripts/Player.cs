@@ -174,13 +174,13 @@ public class Player : MonoBehaviour
             Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
             if (buffs.buffXPGain != 0)
             {
-                EXP = EXP + (1*buffs.buffXPGain);
+                EXP = 1 + buffs.buffXPGain;
             } else
             {
                 EXP++;
             }
         }
-        lvlmanager.updateExperienceBar(EXP, 10);
+        lvlmanager.updateExperienceBar(EXP, level*10);
     }
 
     /*

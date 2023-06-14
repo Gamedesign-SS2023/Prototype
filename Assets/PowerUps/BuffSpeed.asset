@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb000daeb7b1b4a8897d2f47f9447a, type: 3}
   m_Name: BuffSpeed
   m_EditorClassIdentifier: 
-  type: 
-  upgradeName: 
-  icon: {fileID: 0}
-  description: 
+  upgradeName: Geschwindigkeit
+  icon: {fileID: 21300000, guid: 2fa65a91d12ac7c4288629f7a8009599, type: 3}
+  description: trthzgj

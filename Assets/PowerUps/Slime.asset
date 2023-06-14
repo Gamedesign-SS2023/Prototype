@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb000daeb7b1b4a8897d2f47f9447a, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  type: 
-  upgradeName: 
-  icon: {fileID: 0}
-  description: 
+  upgradeName: Schleim
+  icon: {fileID: 21300000, guid: 98b881d0a3110d045bb4feb661dc67a5, type: 3}
+  description: txrkkiu

@@ -29,8 +29,8 @@ public class Enemy : MonoBehaviour, Damageable
 
     private void Start()
     {
+        maxhealth = GameObject.Find("Player").GetComponent<Player>().level * maxhealth;
         health = maxhealth;
-    
     }
     private void FixedUpdate()
     {
@@ -69,6 +69,8 @@ public class Enemy : MonoBehaviour, Damageable
         {
             damageAmount = damageAmount + (damageAmount * 0.5f);
         }
+
+        Debug.Log(damageAmount);
 
         health -= damageAmount;
 
