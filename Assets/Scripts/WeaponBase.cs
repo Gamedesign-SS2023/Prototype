@@ -13,28 +13,39 @@ public abstract class WeaponBase : MonoBehaviour
 {
     Player playerMove;
 
-    public WeaponData WeaponData;
+    //public WeaponData WeaponData;
     public float timer;
     public WeaponStats stats;
     public Vector2 vectorofattack;
     [SerializeField] DirectionOfAttack attackDirection;
-
+    public bool unlocked = false;
 
     private void Awake()
     {
         playerMove = GetComponent<Player>();
     }
 
-    public void Update()
+    public void unlock()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0f)
-        {
-            Attack();
-            timer = stats.timeToAttack;
-        }
+        unlocked = true;
     }
 
+    public void Update()
+    {
+        //InvokeRepeating("autoAttack", 0, timeToAttack);
+        if(unlocked)
+        {
+            timer -= Time.deltaTime;
+            if (timer < 0f)
+            {
+                Attack();
+                timer = stats.timeToAttack;
+            }
+        }
+        
+    }
+
+    /*
     public void ApplyDamage(Collider2D[] colliders)
     {
         //int damage = GetDamage();
@@ -47,12 +58,15 @@ public abstract class WeaponBase : MonoBehaviour
             }
         }
     }
+    */
 
+    /*
     public virtual void SetData(WeaponData wd)
     {
         WeaponData = wd;
         stats = new WeaponStats(wd.stats.damage,wd.stats.timeToAttack,wd.stats.numberOfAttacks);
     }
+    */
     public abstract void Attack();
 
     public void Upgrade(UpgradeData upgradeData)

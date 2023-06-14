@@ -7,11 +7,6 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Stats")]
-<<<<<<< HEAD
-    [SerializeField] public float hp;
-    [SerializeField] public float maxhp;
-    [SerializeField] public float moveSpeed = 3;
-=======
     [SerializeField] public int hp;
     [SerializeField] public int maxhp;
     [SerializeField] public float moveSpeed = 3f;
@@ -21,7 +16,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public float lastHorizontalCoupledVector;
     [HideInInspector] public float lastVertictalCoupledVector;
 
->>>>>>> 540cb7266577666f97abad2bb67b706ac2ceba17
     public int level = 1;
     public int EXP = 0;
     [SerializeField] HpBar hpbar;
@@ -34,12 +28,14 @@ public class Player : MonoBehaviour
     public Animator animator;
 
     [SerializeField] LevelUpPanelManager leveluppanelmanager;
+    /*
     WeaponManager weaponmanager;
 
     [Header("Upgrades")]
     public List<UpgradeData> upgrades;
     public List<UpgradeData> selectedUpgrades;
     [SerializeField] public List<UpgradeData> aquiredUpgrades;
+    */
 
     Rigidbody2D rb;
     private Vector3 moveDirection;
@@ -49,7 +45,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         moveDirection = new Vector3();
-        weaponmanager= GetComponent<WeaponManager>();
+        //weaponmanager= GetComponent<WeaponManager>();
         
     }
 
@@ -123,6 +119,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
+        /*
         if (selectedUpgrades == null)
         {
             selectedUpgrades=new List<UpgradeData>();
@@ -131,9 +128,12 @@ public class Player : MonoBehaviour
         selectedUpgrades.AddRange(GetUpgrades(3));
 
         leveluppanelmanager.OpenPanel(selectedUpgrades);
+        */
+
         level++;
         updateExp(true);
         lvlmanager.setLevelText(level);
+        leveluppanelmanager.OpenPanel();
     }
 
     public void TakeDamage(int damageAmount)
@@ -183,6 +183,7 @@ public class Player : MonoBehaviour
         lvlmanager.updateExperienceBar(EXP, 10);
     }
 
+    /*
     public List<UpgradeData> GetUpgrades(int count)
     {
         List<UpgradeData> upgradeList = new List<UpgradeData>();
@@ -230,4 +231,5 @@ public class Player : MonoBehaviour
     {
         upgrades.AddRange(upgradestoAdd);
     }
+    */
 }

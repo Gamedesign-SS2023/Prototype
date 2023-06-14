@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9001034340993006688}
   - component: {fileID: 3074144141955943882}
   m_Layer: 0
-  m_Name: wpn_Niedlichkeit
+  m_Name: wpn_cuteness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

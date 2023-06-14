@@ -8,6 +8,7 @@ public class Niedlichkeit_Attack : WeaponBase
     [SerializeField] float radius = 3f;
     [SerializeField] GameObject prefab;
     public float ttl;
+    public int weaponLVL;
 
     private void Start()
     {

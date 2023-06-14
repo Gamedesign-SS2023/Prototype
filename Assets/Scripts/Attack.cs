@@ -8,8 +8,7 @@ public class Attack : MonoBehaviour
     //public float weaponSpeed;
     public float cooldown;
     [SerializeField] private AudioSource shootingSound;
-    [SerializeField] float timetoattack;
-    float timer;
+    public int weaponLVL;
 
     // Start is called before the first frame update
     void Start()

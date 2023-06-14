@@ -9,9 +9,11 @@ public class messer_gabel_attack : WeaponBase
     [SerializeField] float spread = 0.5f;
     [SerializeField] GameObject messerGabelPrefab;
     Player player;
+    public int weaponLVL;
 
     private void Awake()
     {
+        enabled = false;
         player = GetComponentInParent<Player>();
     }
 

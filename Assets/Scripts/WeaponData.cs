@@ -31,5 +31,4 @@ public class WeaponData : ScriptableObject
     public string Name;
     public WeaponStats stats;
     public GameObject weaponBasePrefab;
-    public List<UpgradeData> upgrades;
 }

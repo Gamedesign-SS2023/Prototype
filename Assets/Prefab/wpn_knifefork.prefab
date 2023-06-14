@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1920540345709455426}
   - component: {fileID: 1920540345709455425}
   m_Layer: 0
-  m_Name: wpn_messer_gabel
+  m_Name: wpn_knifefork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

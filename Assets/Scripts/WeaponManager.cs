@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/*
 public class WeaponManager : MonoBehaviour
 {
     [SerializeField] Transform weaponObjectContainer;
@@ -39,3 +40,4 @@ public class WeaponManager : MonoBehaviour
         weaponToUpgrade.Upgrade(upgradeData);
     }
 }
+*/
