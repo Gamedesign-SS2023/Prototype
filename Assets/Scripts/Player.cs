@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] public int hp;
-    [SerializeField] public int maxhp;
+    [SerializeField] public float hp;
+    [SerializeField] public float maxhp;
     [SerializeField] public float moveSpeed = 3f;
 
     [HideInInspector] public float lastHorizontalDeCoupledVector;

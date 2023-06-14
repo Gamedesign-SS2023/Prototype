@@ -44,7 +44,7 @@ public class LevelUpPanelManager : MonoBehaviour
         pausemanager.PauseGame();
         panel.SetActive(true);
 
-        Shuffle(powerUps);
+        powerUps = Shuffle(powerUps);
         for (int i = 0; i < upgradebuttons.Count; i++)
         {
             if(powerUps[i] != null)
@@ -73,27 +73,39 @@ public class LevelUpPanelManager : MonoBehaviour
             case "HP":
                 GameObject.Find("Buffs").GetComponent<Buffs>().buffHP++;
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffHP;
+
+                GameObject.Find("Player").GetComponent<Player>().maxhp *= (1.1f * lvl);
+
                 break;
+
             case "Geschwindigkeit":
                 GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed++;
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
+
+                GameObject.Find("Player").GetComponent<Player>().moveSpeed += lvl * 2;
+
                 break;
+
             case "kritischer Schaden":
                 GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance++;
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance;
                 break;
+
             case "Basisschaden":
                 GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage++;
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage;
                 break;
+
             case "Erfahrungsgewinn":
                 GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain++;
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain;
                 break;
+
             case "Schleim":
                 GameObject.Find("Player").GetComponent<Attack>().weaponLVL++;
                 lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL;
                 break;
+
             case "Niedlichkeit":
 
                 Niedlichkeit_Attack cuteness = GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>();
@@ -106,6 +118,7 @@ public class LevelUpPanelManager : MonoBehaviour
                     cuteness.unlock();
                 }
                 break;
+
             case "Messer und Gabel":
 
                 messer_gabel_attack knifefork = GameObject.Find("wpn_knifefork").GetComponent<messer_gabel_attack>();
