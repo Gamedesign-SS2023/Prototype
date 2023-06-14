@@ -11,6 +11,7 @@ TagManager:
   - Barrel
   - CoinDrop
   - HpDrop
+  - Audio
   layers:
   - Default
   - TransparentFX

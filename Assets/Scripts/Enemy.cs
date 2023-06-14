@@ -50,24 +50,33 @@ public class Enemy : MonoBehaviour, Damageable
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
+        float critChance = 10;
+
+        Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
+        if (buffs.buffBaseDamage != 0)
+        {
+            damageAmount = damageAmount + (buffs.buffXPGain*5);
+        }
+        if (buffs.buffCritChance != 0)
+        {
+            critChance = critChance + (buffs.buffCritChance * 5);
+        }
+
+        //Crit Chance
+        if (UnityEngine.Random.Range(0, 100) <= critChance)
+        {
+            damageAmount = damageAmount + (damageAmount * 0.5f);
+        }
+
         health -= damageAmount;
+
         if (health <= 0)
         {
             Die();
         }
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("hit");
-        if (collision.CompareTag("Weapon"))
-        {
-            //defaultDamage.Play();
-            defaultDamage.Play();
-        }
     }
 
     /*

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] int healamount;
-    [SerializeField] int coinamount;
+    //[SerializeField] int coinamount;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "HpDrop") {
@@ -16,12 +16,14 @@ public class PickUp : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        /*
         if(gameObject.tag == "CoinDrop")
         {
             Debug.Log("TestCoin");
             Destroy(gameObject);
             //Coins erhöhen
         }
+        */
     }
 
 }

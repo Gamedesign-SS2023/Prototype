@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestructableObject : MonoBehaviour, Damageable
 {
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         Destroy(gameObject);
     }

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] public int hp;
-    [SerializeField] public int maxhp;
+    [SerializeField] public float hp;
+    [SerializeField] public float maxhp;
     [SerializeField] public float moveSpeed = 3;
     public int level = 1;
     public int EXP = 0;
@@ -52,6 +52,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check modifications made through buffs
+        /*
+        Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
+        if (buffs.buffHP != 0)
+        {
+            maxhp = maxhp * (1.1f*buffs.buffHP);
+        }
+        if(buffs.buffSpeed != 0)
+        {
+            moveSpeed += buffs.buffSpeed * 2; 
+        }
+        */
+
         moveDirection.x = Input.GetAxis("Horizontal");
         moveDirection.y = Input.GetAxis("Vertical");
 
@@ -68,11 +81,9 @@ public class Player : MonoBehaviour
         animator.SetFloat("Horizontal",moveDirection.x);
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
-
         if(EXP >= lvlmanager.expSlider.maxValue){
             LevelUp(); 
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -135,7 +146,14 @@ public class Player : MonoBehaviour
         {
             EXP = 0;
         } else {
-            EXP++;
+            Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
+            if (buffs.buffXPGain != 0)
+            {
+                EXP = EXP + (1*buffs.buffXPGain);
+            } else
+            {
+                EXP++;
+            }
         }
         lvlmanager.updateExperienceBar(EXP, 10);
     }
@@ -180,7 +198,7 @@ public class Player : MonoBehaviour
                 break;
         }
         aquiredUpgrades.Add(upgradeData);
-        upgrades.Remove(upgradeData);
+        upgrades.Remove(upgradeData);   
     }
 
     public void AddUpgradesIntoListOfAvailableUpgrades(List<UpgradeData> upgradestoAdd)

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  maxhp: 0
+  maxhp: 100
   moveSpeed: 5
   level: 1
   EXP: 0

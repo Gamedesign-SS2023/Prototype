@@ -6,7 +6,7 @@ public class HpBar : MonoBehaviour
 {
     [SerializeField] Transform bar;
 
-    public void SetState(int current, int max)
+    public void SetState(float current, float max)
     {
         float state = (float) current;
         state /= max;
