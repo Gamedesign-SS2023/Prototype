@@ -43,6 +43,8 @@ public class LevelUpPanelManager : MonoBehaviour
 
     public void OpenPanel()
     {
+        popUpSound.Play();
+
         pausemanager.PauseGame();
         panel.SetActive(true);
 

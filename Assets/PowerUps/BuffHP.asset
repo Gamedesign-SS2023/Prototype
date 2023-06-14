@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb000daeb7b1b4a8897d2f47f9447a, type: 3}
   m_Name: BuffHP
   m_EditorClassIdentifier: 
+  type: buff
   upgradeName: HP
   icon: {fileID: 21300000, guid: dae3c76439518944ca8d1691f6cbad01, type: 3}
-  description: text
+  description: "Erh\xF6ht die Lebenspunkte des Spielers."
+  descLVL1: 
+  descLVL2: 
+  descLVL3: 

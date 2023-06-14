@@ -15,4 +15,7 @@ MonoBehaviour:
   type: buff
   upgradeName: kritischer Schaden
   icon: {fileID: 21300000, guid: 6dff7e8e94ea4b24eb90473fb2c4f5b0, type: 3}
-  description: frgtdhgjm
+  description: "Erh\xF6ht die Chance, kritischen Schaden zu erzielen."
+  descLVL1: 
+  descLVL2: 
+  descLVL3: 
