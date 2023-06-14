@@ -24,50 +24,84 @@ public class UpgradeButton : MonoBehaviour
         icon.sprite = upgradeData.icon;
         upgradeName.text = upgradeData.upgradeName;
 
-        if(upgradeData.type == "buff")
+        int lvl = 0;
+
+        switch (upgradeData.upgradeName)
+        {
+            case "HP":
+                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffHP;
+                break;
+
+            case "Geschwindigkeit":
+                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
+                break;
+
+            case "kritischer Schaden":
+                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance;
+                break;
+
+            case "Basisschaden":
+                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage;
+                break;
+
+            case "Erfahrungsgewinn":
+                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain;
+                break;
+            case "Schleim":
+                lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL;
+                break;
+            case "Niedlichkeit":
+                if(!GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().unlocked)
+                {
+                    lvl = 4;
+                } else
+                {
+                    lvl = GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().weaponLVL;
+                }
+                break;
+            case "Messer und Gabel":
+                if (!GameObject.Find("wpn_knifefork").GetComponent<messer_gabel_attack>().unlocked)
+                {
+                    lvl = 4;
+                }
+                else
+                {
+                    lvl = GameObject.Find("wpn_knifefork").GetComponent<messer_gabel_attack>().weaponLVL;
+                }
+                break;
+        }
+
+        if (upgradeData.type == "buff")
         {
             upgradeDesc.text = upgradeData.description;
         }
-        if(upgradeData.type == "weapon")
-        {
-            int lvl = 0;
 
-            switch (upgradeData.upgradeName)
-            {
-                case "Schleim":
-                    lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL+1;
-                    break;
-                case "Niedlichkeit":
-                    lvl = GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().weaponLVL;
-                    break;
-                case "Messer und Gabel":
-                    lvl = GameObject.Find("wpn_knifefork").GetComponent<messer_gabel_attack>().weaponLVL;
-                    break;
-            }
-            
-            switch(lvl)
+        if (upgradeData.type == "weapon")
+        {
+            switch (lvl)
             {
                 case 0:
-                    upgradeDesc.text = upgradeData.description;
-                    break;
-                case 1:
                     upgradeDesc.text = upgradeData.descLVL1;
                     break;
-                case 2:
+                case 1:
                     upgradeDesc.text = upgradeData.descLVL2;
                     break;
-                case 3:
+                case 2:
                     upgradeDesc.text = upgradeData.descLVL3;
                     break;
+                case 4:
+                    upgradeDesc.text = upgradeData.description;
+                    break;
             }
+        }
 
-            if(lvl == 0)
-            {
-                upgradeLVL.text = "Unlock";
-            } else
-            {
-                upgradeLVL.text = "LVL"+lvl.ToString();
-            }
+        if (lvl == 4)
+        {
+            upgradeLVL.text = "Unlock";
+        }
+        else
+        {
+            upgradeLVL.text = "LVL" + (lvl + 1).ToString();
         }
     }
 
