@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour, Damageable
     GameObject targetObject;
     Player player;
     public GameObject damagePre;
-    public AudioSource defaultDamage;
 
     private void Awake()
     {
@@ -85,7 +84,7 @@ public class Enemy : MonoBehaviour, Damageable
 
         if (health <= 0)
         {
-            Die();
+            StartCoroutine(DieElaborately());
         }
 
     }
@@ -118,6 +117,20 @@ public class Enemy : MonoBehaviour, Damageable
     }
     void Die()
     {
+        GetComponent<LootBag>().InstantiateLoot(transform.position);
+
+        //GetComponent<SpriteRenderer>().color = Color.red;
+        Destroy(gameObject);
+    }
+
+    IEnumerator DieElaborately()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject.Find("EnemyDeath").GetComponent<AudioSource>().Play();
+
         GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
