@@ -36,8 +36,7 @@ public class LevelManager : MonoBehaviour
 
         if (timeStamp >= levelEnd)
         {
-            enabled = false;
-            //add game ending
+            GameObject.Find("Player").GetComponent<CharacterGameOver>().GameOver(false);
         }
     }
 

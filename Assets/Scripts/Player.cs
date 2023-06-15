@@ -154,7 +154,7 @@ public class Player : MonoBehaviour
         hp -= damageAmount;
         if (hp <= 0)
         {
-            GetComponent<CharacterGameOver>().GameOver();
+            GetComponent<CharacterGameOver>().GameOver(true);
             isdead = true;
         }
         hpbar.SetState(hp, maxhp);
