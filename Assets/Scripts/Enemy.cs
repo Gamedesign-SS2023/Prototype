@@ -35,6 +35,13 @@ public class Enemy : MonoBehaviour, Damageable
     private void FixedUpdate()
     {
         Vector3 direction = (target.position - transform.position).normalized;
+        if(direction.x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        } else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
         rb.velocity=direction*moveSpeed;
     }
 
