@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public int damage;
     public string weaponType;
     public int weaponLVL;
-    [SerializeField] int hits;
+    int hits;
     
     // Start is called before the first frame update
     void Start()

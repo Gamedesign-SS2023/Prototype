@@ -18,4 +18,4 @@ MonoBehaviour:
   description: "Verzehre schnell Menschen, die dir gegen\xFCber stehen."
   descLVL1: "F\xE4hrt durch einen zus\xE4tzlichen Gegner hindurch."
   descLVL2: "Erh\xF6ht den Basisschaden um 10."
-  descLVL3: "Prallt ab, f\xFCgt jedem durchgefahrenem Gegner Schaden zu."
+  descLVL3: "Schie\xDFt ein weiteres Projektil in die entgegengesetzte Richtung."

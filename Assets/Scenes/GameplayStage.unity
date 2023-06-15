@@ -20872,7 +20872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: damage
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: cooldown
@@ -20886,6 +20886,10 @@ PrefabInstance:
       propertyPath: timeToAttack
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
+      propertyPath: throwingsound
+      value: 
+      objectReference: {fileID: 1473411313}
     - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: numberOfAttacks
       value: 1
@@ -20942,7 +20946,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1920540345709455425, guid: c30abc16b4776824d89149fea57d627d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c30abc16b4776824d89149fea57d627d, type: 3}
 --- !u!1001 &515249624
 PrefabInstance:

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+/*
 public enum DirectionOfAttack
 {
     None,
@@ -8,6 +9,7 @@ public enum DirectionOfAttack
     LeftRight,
     UpDown
 }
+*/
 
 public abstract class WeaponBase : MonoBehaviour
 {
@@ -17,8 +19,8 @@ public abstract class WeaponBase : MonoBehaviour
     public float timer;
     //public float cooldown;
     //public WeaponStats stats;
-    public Vector2 vectorofattack;
-    [SerializeField] DirectionOfAttack attackDirection;
+    //public Vector2 vectorofattack;
+    //[SerializeField] DirectionOfAttack attackDirection;
     public bool unlocked = false;
 
     public int damage;
@@ -84,6 +86,7 @@ public abstract class WeaponBase : MonoBehaviour
         stats.Sum(upgradeData.WeaponUpgradeStats);
     }
     */
+    /*
     public void UpdateVectorOfAttack()
     {
         if(attackDirection == DirectionOfAttack.None)
@@ -110,5 +113,6 @@ public abstract class WeaponBase : MonoBehaviour
         vectorofattack = vectorofattack.normalized;
 
     }
+    */
     
 }

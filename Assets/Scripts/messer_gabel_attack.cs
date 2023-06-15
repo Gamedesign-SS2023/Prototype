@@ -41,14 +41,34 @@ public class messer_gabel_attack : WeaponBase
 
         throwingsound.Play();
 
+        if(weaponLVL == 3)
+        {
+            shootProjectile(false);
+            shootProjectile(true);
+        } else
+        {
+            if (transform.position.x < 0)
+            {
+                shootProjectile(false);
+            } else
+            {
+                shootProjectile(true);
+            }
+        }
+    }
+
+    void shootProjectile(bool right)
+    {
         GameObject projectile = Instantiate(messerGabelPrefab, transform.position, transform.rotation);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        projectile.GetComponent<throwingMesserProjectile>().weaponLVL = weaponLVL;
 
-        if(player.lastHorizontalCoupledVector < 0)
+        if (!right)
         {
             projectile.GetComponent<SpriteRenderer>().flipX = true;
             rb.velocity = -transform.right * speed;
-        } else
+        }
+        else
         {
             projectile.GetComponent<SpriteRenderer>().flipX = false;
             rb.velocity = transform.right * speed;

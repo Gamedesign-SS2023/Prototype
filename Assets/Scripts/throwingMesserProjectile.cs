@@ -8,9 +8,10 @@ public class throwingMesserProjectile : MonoBehaviour
 {
     //Vector3 direction;
     //[SerializeField] float speed;
-    [SerializeField] public int damage;
+    [SerializeField] public float damage;
     //public float timeToLive = 3;
-
+    int hits;
+    public int weaponLVL;
 
     /*
     public void SetDirection(float x,float y)
@@ -69,9 +70,21 @@ public class throwingMesserProjectile : MonoBehaviour
         {
             GameObject.Find("KnifeForkHit").GetComponent<AudioSource>().Play();
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
-            enemy.TakeDamage(damage);
+            if (weaponLVL >= 2)
+            {
+                enemy.TakeDamage(damage + 10);
+            }
+            else
+            {
+                enemy.TakeDamage(damage);
+            }
             enemy.CreateDamage(damage.ToString(), 0);
-            Destroy(gameObject);
+
+            hits = (weaponLVL >= 1) ? hits + 1 : hits + 2;
+            if (hits == 2)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

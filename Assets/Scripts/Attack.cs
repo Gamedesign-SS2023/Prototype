@@ -62,7 +62,6 @@ public class Attack : MonoBehaviour
     {
         GameObject projectile = Instantiate(weapon, transform.position, transform.rotation);
         projectile.GetComponent<Weapon>().weaponLVL = weaponLVL;
-        //projectile.GetComponent<Weapon>().damage += 20;
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         Vector2 direction = (closestEnemy.transform.position - transform.position);
