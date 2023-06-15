@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-            enemy.CreateDamage(damage.ToString(), 0);
+            //enemy.CreateDamage(damage.ToString(), 0);
 
             //if not lvl3 then set hits to 2 to destroy gameobject upon first hit
             hits = (weaponLVL == 3) ? hits + 1 : hits + 2;

@@ -9,6 +9,7 @@ public class Niedlichkeit_Attack : WeaponBase
     [SerializeField] GameObject prefab;
     public float ttl;
     public int weaponLVL;
+    public float damage;
 
     private void Start()
     {
@@ -26,7 +27,14 @@ public class Niedlichkeit_Attack : WeaponBase
             if(d != null)
             {
                 GameObject.Find("CutenessHit").GetComponent<AudioSource>().Play();
-                d.TakeDamage(damage);
+                if (weaponLVL == 3)
+                {
+                    d.TakeDamage(damage + 1);
+                }
+                else
+                {
+                    d.TakeDamage(damage);
+                }
             }
         }
     }

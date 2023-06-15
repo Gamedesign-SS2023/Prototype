@@ -78,7 +78,7 @@ public class throwingMesserProjectile : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-            enemy.CreateDamage(damage.ToString(), 0);
+            //enemy.CreateDamage(damage.ToString(), 0);
 
             hits = (weaponLVL >= 1) ? hits + 1 : hits + 2;
             if (hits == 2)

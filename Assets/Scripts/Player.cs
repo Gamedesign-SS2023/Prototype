@@ -11,17 +11,20 @@ public class Player : MonoBehaviour
     [SerializeField] public float maxhp;
     [SerializeField] public float moveSpeed = 3f;
 
+    /*
     [HideInInspector] public float lastHorizontalDeCoupledVector;
     [HideInInspector] public float lastVertictalDeCoupledVector;
     [HideInInspector] public float lastHorizontalCoupledVector;
     [HideInInspector] public float lastVertictalCoupledVector;
+    */
 
     public int level = 1;
     public int EXP = 0;
     [SerializeField] HpBar hpbar;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource pickUpExp;
+    public AudioSource pickUpExp;
+    public AudioSource getHit;
 
     [Header("Backend")]
     public LevelManager lvlmanager;
@@ -56,11 +59,13 @@ public class Player : MonoBehaviour
         lvlmanager.setLevelText(level);
         hp = maxhp;
 
+        /*
         lastHorizontalDeCoupledVector = -1f;
         lastVertictalDeCoupledVector = 1f;
 
         lastHorizontalCoupledVector = -1f;
         lastVertictalCoupledVector = 1f;
+        */
     }
 
     // Update is called once per frame
@@ -82,6 +87,7 @@ public class Player : MonoBehaviour
         moveDirection.x = Input.GetAxis("Horizontal");
         moveDirection.y = Input.GetAxis("Vertical");
 
+        /*
         if(moveDirection.x != 0 || moveDirection.y != 0)
         {
             lastHorizontalCoupledVector = moveDirection.x;
@@ -97,6 +103,7 @@ public class Player : MonoBehaviour
         {
             lastVertictalDeCoupledVector = moveDirection.y;
         }
+        */
 
         rb.velocity = moveDirection * moveSpeed;
         animator.SetFloat("Horizontal",moveDirection.x);
@@ -138,6 +145,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        getHit.Play();
+
         if (isdead)
         {
             return;

@@ -13,7 +13,7 @@ public enum DirectionOfAttack
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    Player playerMove;
+    //Player playerMove;
 
     //public WeaponData WeaponData;
     public float timer;
@@ -22,14 +22,11 @@ public abstract class WeaponBase : MonoBehaviour
     //public Vector2 vectorofattack;
     //[SerializeField] DirectionOfAttack attackDirection;
     public bool unlocked = false;
-
-    public int damage;
-    public float timeToAttack;
-    public int numberOfAttacks;
+    public float cooldown;
 
     private void Awake()
     {
-        playerMove = GetComponent<Player>();
+        //playerMove = GetComponent<Player>();
     }
 
     private void Start()
@@ -52,7 +49,7 @@ public abstract class WeaponBase : MonoBehaviour
             if (timer < 0f)
             {
                 Attack();
-                timer = timeToAttack;
+                timer = cooldown;
             }
         }
     }

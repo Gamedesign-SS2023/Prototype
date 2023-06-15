@@ -129,6 +129,12 @@ public class LevelUpPanelManager : MonoBehaviour
                 {
                     cuteness.unlock();
                 }
+
+                if (lvl == 2)
+                {
+                    GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().cooldown -= 0.3f;
+                }
+
                 break;
 
             case "Messer und Gabel":

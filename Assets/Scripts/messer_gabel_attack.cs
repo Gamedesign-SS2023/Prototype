@@ -8,13 +8,13 @@ public class messer_gabel_attack : WeaponBase
     [SerializeField] private AudioSource throwingsound;
     //[SerializeField] float spread = 0.5f;
     [SerializeField] GameObject messerGabelPrefab;
-    Player player;
+    //Player player;
     public int weaponLVL;
     public float speed;
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        //player = GetComponentInParent<Player>();
     }
 
     public override void Attack()
