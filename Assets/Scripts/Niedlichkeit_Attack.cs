@@ -16,7 +16,6 @@ public class Niedlichkeit_Attack : WeaponBase
     }
     public override void Attack()
     {
-        Debug.Log("hello");
         GameObject spawnniedlichkeit = Instantiate(prefab);
         spawnniedlichkeit.transform.position= transform.position;
         spawnniedlichkeit.transform.parent = transform;

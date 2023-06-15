@@ -6,20 +6,20 @@ using UnityEngine.EventSystems;
 
 public class throwingMesserProjectile : MonoBehaviour
 {
-    Vector3 direction;
-    [SerializeField ]float speed;
+    //Vector3 direction;
+    //[SerializeField] float speed;
     [SerializeField] public int damage;
-    public float timeToLive = 3;
+    //public float timeToLive = 3;
 
 
-
+    /*
     public void SetDirection(float x,float y)
     {
         if (x < 0)
         {
-            /*Vector3 scale = transform.localScale;
-            scale.x = scale.x * -1;
-            transform.localScale = scale;*/
+            //Vector3 scale = transform.localScale;
+            //scale.x = scale.x * -1;
+            //transform.localScale = scale;
             x = -1f;
         }else if(x > 0){
             x = 1f;
@@ -61,6 +61,8 @@ public class throwingMesserProjectile : MonoBehaviour
         }
 
     }
+*/
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Enemy")
