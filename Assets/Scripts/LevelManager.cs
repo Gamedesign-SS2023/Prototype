@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("barrelSpawn", 0, 3);
+        InvokeRepeating("barrelSpawn", 0, 20);
     }
 
     // Update is called once per frame
