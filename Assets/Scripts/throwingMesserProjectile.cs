@@ -90,5 +90,9 @@ public class throwingMesserProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collider.gameObject.tag == "Barrel")
+        {
+            Destroy(collider.gameObject);
+        }
     }
 }
