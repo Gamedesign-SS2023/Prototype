@@ -44,6 +44,7 @@ public class Weapon : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
     }
     
     public float GetDamage()

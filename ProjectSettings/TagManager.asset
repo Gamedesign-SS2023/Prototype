@@ -12,6 +12,7 @@ TagManager:
   - CoinDrop
   - HpDrop
   - Audio
+  - Fence
   layers:
   - Default
   - TransparentFX

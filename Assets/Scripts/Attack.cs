@@ -41,9 +41,14 @@ public class Attack : MonoBehaviour
 
         for (int i = 1; i < enemies.Length; i++)
         {
-            float distanceNew = Vector2.Distance(enemies[i].transform.position, transform.position);
-            float distanceOld = Vector2.Distance(closestEnemy[0].transform.position, transform.position);
-            if (distanceNew < distanceOld) closestEnemy.Insert(0, enemies[i]);
+            //don't target enemies that are out of bounds / outside the fence
+            if(enemies[i].transform.position.x < 50f && enemies[i].transform.position.x > -50f
+                && enemies[i].transform.position.y < 50f && enemies[i].transform.position.y > -50f)
+            {
+                float distanceNew = Vector2.Distance(enemies[i].transform.position, transform.position);
+                float distanceOld = Vector2.Distance(closestEnemy[0].transform.position, transform.position);
+                if (distanceNew < distanceOld) closestEnemy.Insert(0, enemies[i]);
+            }
         }
 
         shootingSound.Play();

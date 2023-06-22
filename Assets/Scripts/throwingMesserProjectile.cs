@@ -86,5 +86,9 @@ public class throwingMesserProjectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if (collider.gameObject.tag == "Fence")
+        {
+            Destroy(gameObject);
+        }
     }
 }
