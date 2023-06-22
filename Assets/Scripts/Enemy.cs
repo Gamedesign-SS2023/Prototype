@@ -76,8 +76,6 @@ public class Enemy : MonoBehaviour, Damageable
             damageAmount = damageAmount + (damageAmount * 0.5f);
         }
 
-        Debug.Log(damageAmount);
-
         health -= damageAmount;
 
         CreateDamage(damageAmount.ToString(), 0);

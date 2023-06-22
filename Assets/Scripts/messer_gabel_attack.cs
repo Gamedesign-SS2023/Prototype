@@ -8,13 +8,14 @@ public class messer_gabel_attack : WeaponBase
     [SerializeField] private AudioSource throwingsound;
     //[SerializeField] float spread = 0.5f;
     [SerializeField] GameObject messerGabelPrefab;
-    //Player player;
+    Player player;
     public int weaponLVL;
     public float speed;
+    float direction = 0f;
 
     private void Awake()
     {
-        //player = GetComponentInParent<Player>();
+        player = GetComponentInParent<Player>();
     }
 
     public override void Attack()
@@ -39,6 +40,11 @@ public class messer_gabel_attack : WeaponBase
         }
         */
 
+        if(player.GetComponent<Rigidbody2D>().velocity.x != 0f)
+        {
+            direction = player.GetComponent<Rigidbody2D>().velocity.x;
+        }
+
         throwingsound.Play();
 
         if(weaponLVL == 3)
@@ -47,7 +53,7 @@ public class messer_gabel_attack : WeaponBase
             shootProjectile(true);
         } else
         {
-            if (transform.position.x < 0)
+            if (direction < 0)
             {
                 shootProjectile(false);
             } else

@@ -20884,7 +20884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: unlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: timeToAttack
@@ -27953,6 +27953,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1128148183}
     m_Modifications:
+    - target: {fileID: -5752628944097780314, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -49913,7 +49917,12 @@ MonoBehaviour:
   powerUps:
   - {fileID: 11400000, guid: 6e8c9874e9d93f54ca5ece42056854b9, type: 2}
   - {fileID: 11400000, guid: 90ab887cb8b7b884380faf01778a8221, type: 2}
+  - {fileID: 11400000, guid: 4649c665e067a3549b65f04291f8a602, type: 2}
+  - {fileID: 11400000, guid: 4eb983e073d0e8943983d35da0549069, type: 2}
   - {fileID: 11400000, guid: b7a7a6be2393d4344b7e8dc4715c6336, type: 2}
+  - {fileID: 11400000, guid: 58ff9aeac104f47479cdb343b72469c7, type: 2}
+  - {fileID: 11400000, guid: d74ce3efe9a5eb045bb6884302774990, type: 2}
+  - {fileID: 11400000, guid: a8e4da01aed8b7e42813718c426cd1eb, type: 2}
   optionPrefab: {fileID: 1036928446052080763, guid: 91ba7c2c11ac0f14da0738cd0d5cd931, type: 3}
   popUpSound: {fileID: 1473411315}
   clickSound: {fileID: 1473411314}
