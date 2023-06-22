@@ -12,8 +12,9 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Input needs to be in SECONDS")]
     public int levelEnd;
 
-    [Header("Enemy")]
+    [Header("Spawn")]
     public GameObject enemyPrefab;
+    public GameObject barrelPrefab;
 
     [Header("EXP")]
     public Slider expSlider;
@@ -23,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-
+        InvokeRepeating("barrelSpawn", 0, 3);
     }
 
     // Update is called once per frame
@@ -91,5 +92,15 @@ public class LevelManager : MonoBehaviour
     public void setLevelText(int lvl)
     {
         level.text = "LVL" + lvl;
+    }
+
+    void barrelSpawn()
+    {
+        Vector3 spawnPos = new Vector3(
+            UnityEngine.Random.Range(-50f, 50f),
+            UnityEngine.Random.Range(-50f, 50f),
+            0);
+
+        Instantiate(barrelPrefab, spawnPos, Quaternion.identity);
     }
 }

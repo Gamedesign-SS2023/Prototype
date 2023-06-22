@@ -2322,7 +2322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9461774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17898,7 +17898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074144141955943882, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
       propertyPath: unlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3074144141955943882, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
       propertyPath: timeToAttack
@@ -20494,7 +20494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9461774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27563,7 +27563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9461774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -46800,7 +46800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1128148183
 Transform:
   m_ObjectHideFlags: 0
@@ -48988,6 +48988,7 @@ MonoBehaviour:
   timerText: {fileID: 1269017724}
   levelEnd: 180
   enemyPrefab: {fileID: 7288106600911067856, guid: 1d639b78395188549b59da425fdd0ace, type: 3}
+  barrelPrefab: {fileID: 6168623301029478673, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
   expSlider: {fileID: 576142793}
   level: {fileID: 757689944}
 --- !u!114 &1185163376
@@ -58753,7 +58754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9461774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5052499132618519937, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
       propertyPath: m_LocalRotation.w
