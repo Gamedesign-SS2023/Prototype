@@ -66,8 +66,10 @@ public class messer_gabel_attack : WeaponBase
     void shootProjectile(bool right)
     {
         GameObject projectile = Instantiate(messerGabelPrefab, transform.position, transform.rotation);
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        projectile.transform.parent = transform;
         projectile.GetComponent<throwingMesserProjectile>().weaponLVL = weaponLVL;
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
         if (!right)
         {

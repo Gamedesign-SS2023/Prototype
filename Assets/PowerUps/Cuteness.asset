@@ -16,6 +16,6 @@ MonoBehaviour:
   upgradeName: Niedlichkeit
   icon: {fileID: 21300000, guid: 7e7e2a61fe9c5214aae314e761b73877, type: 3}
   description: "\xDCberzeuge nahstehende Menschen von deinem Charme."
-  descLVL1: die anderen lvl funktionieren nur dieses nicht sorry
+  descLVL1: "Reichweite vergr\xF6\xDFern."
   descLVL2: "Cooldown um 0.3 verk\xFCrzen."
   descLVL3: "Erh\xF6ht den Basisschaden um 10."

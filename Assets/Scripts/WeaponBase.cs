@@ -32,11 +32,13 @@ public abstract class WeaponBase : MonoBehaviour
     private void Start()
     {
         //InvokeRepeating("Attack", 0, cooldown);
+        //gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void unlock()
     {
         unlocked = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void Update()

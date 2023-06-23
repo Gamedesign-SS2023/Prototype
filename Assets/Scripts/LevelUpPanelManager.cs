@@ -121,13 +121,19 @@ public class LevelUpPanelManager : MonoBehaviour
             case "Niedlichkeit":
 
                 Niedlichkeit_Attack cuteness = GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>();
-                if(cuteness.unlocked)
+
+                if (cuteness.unlocked)
                 {
                     cuteness.weaponLVL++;
                     lvl = cuteness.weaponLVL;
                 } else
                 {
                     cuteness.unlock();
+                }
+
+                if(lvl == 1)
+                {
+                    cuteness.transform.localScale += new Vector3(1.5f, 1.5f, 0);
                 }
 
                 if (lvl == 2)
