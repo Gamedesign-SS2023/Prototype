@@ -6,15 +6,16 @@ using TMPro;
 public class Damage : MonoBehaviour
 {
     public TMP_Text text;
-    float alpha = 1;
+    //float alpha = 1;
 
     private void FixedUpdate()
     {
-        ChangeAlpha();
+        //ChangeAlpha();
     }
 
     public void Init(string damage,int type)
     {
+        /*
         if(type == 0)//normal
         {
             text.color = Color.white;
@@ -27,10 +28,13 @@ public class Damage : MonoBehaviour
         {
             text.color = Color.red;
         }
-        text.text = damage;
-        alpha = 1;
+        */
+        StartCoroutine(fade(damage,type));
+        //text.text = damage;
+        //alpha = 1;
     }
 
+    /*
     void ChangeAlpha()
     {
         if(alpha <= 0)
@@ -40,5 +44,47 @@ public class Damage : MonoBehaviour
         }
         alpha -= 0.01f;
         text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+    }
+    */
+
+    IEnumerator fade(string damage, int type)
+    {
+        text.text = damage;
+
+        Color c;
+        
+        switch(type)
+        {
+            case 1: //Pacifist
+                c = Color.green;
+                break;
+            case 2: //Genocide
+                c = Color.red;
+                break;
+            default: //Neutral
+                c = Color.white;
+                break;
+        }
+
+        c.a = text.color.a;
+
+        //Fade In
+        for (float alpha = 0f; alpha <= 1f; alpha += 0.1f)
+        {
+            c.a = alpha;
+            text.color = c;
+            yield return new WaitForSeconds(.02f);
+        }
+
+        yield return new WaitForSeconds(.5f);
+
+        //Fade Out
+        for (float alpha = 1f; alpha >= 0f; alpha -= 0.1f)
+        {
+            c.a = alpha;
+            text.color = c;
+            Debug.Log(alpha);
+            yield return new WaitForSeconds(.02f);
+        }
     }
 }

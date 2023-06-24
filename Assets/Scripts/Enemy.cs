@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour, Damageable
     public void CreateDamage(string damageNumstr,int type)
     {
         GameObject damagenum = ObjectPool.Instance.Get(damagePre);
-        damagenum.transform.position = transform.position;
+        damagenum.transform.position = new Vector3(transform.position.x,transform.position.y + 1,0);
         damagenum.GetComponent<Damage>().Init(damageNumstr,type);
 
     }
@@ -128,6 +128,14 @@ public class Enemy : MonoBehaviour, Damageable
         yield return new WaitForSeconds(0.2f);
 
         GameObject.Find("EnemyDeath").GetComponent<AudioSource>().Play();
+
+        Color c = GetComponent<SpriteRenderer>().color;
+        for (float alpha = 1f; alpha >= 0f; alpha -= 0.1f)
+        {
+            c.a = alpha;
+            GetComponent<SpriteRenderer>().color = c;
+            yield return new WaitForSeconds(.05f);
+        }
 
         GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(gameObject);
