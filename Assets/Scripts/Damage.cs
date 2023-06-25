@@ -67,12 +67,17 @@ public class Damage : MonoBehaviour
         }
 
         c.a = text.color.a;
+        gameObject.transform.localScale = new Vector3(0.5f,0.5f,1);
 
         //Fade In
         for (float alpha = 0f; alpha <= 1f; alpha += 0.1f)
         {
             c.a = alpha;
             text.color = c;
+            gameObject.transform.localScale = new Vector3(
+                gameObject.transform.localScale.x + 0.05f,
+                gameObject.transform.localScale.y + 0.05f,
+                1);
             yield return new WaitForSeconds(.02f);
         }
 
@@ -83,8 +88,13 @@ public class Damage : MonoBehaviour
         {
             c.a = alpha;
             text.color = c;
-            Debug.Log(alpha);
+            gameObject.transform.localScale = new Vector3(
+                gameObject.transform.localScale.x - 0.05f,
+                gameObject.transform.localScale.y - 0.05f,
+                1);
             yield return new WaitForSeconds(.02f);
         }
+
+        Destroy(gameObject); //fix damage numbers remaining after fading out 
     }
 }

@@ -124,7 +124,6 @@ public class Enemy : MonoBehaviour, Damageable
     IEnumerator DieElaborately()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         yield return new WaitForSeconds(0.2f);
 
         GameObject.Find("EnemyDeath").GetComponent<AudioSource>().Play();
@@ -134,7 +133,7 @@ public class Enemy : MonoBehaviour, Damageable
         {
             c.a = alpha;
             GetComponent<SpriteRenderer>().color = c;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.02f);
         }
 
         GetComponent<LootBag>().InstantiateLoot(transform.position);
