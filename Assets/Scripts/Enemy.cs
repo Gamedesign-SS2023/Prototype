@@ -17,7 +17,9 @@ public class Enemy : MonoBehaviour, Damageable
     Transform target;
     GameObject targetObject;
     Player player;
+
     public GameObject damagePre;
+    public GameObject EXPPrefab;
 
     private void Awake()
     {
@@ -113,6 +115,7 @@ public class Enemy : MonoBehaviour, Damageable
         damagenum.GetComponent<Damage>().Init(damageNumstr,type);
 
     }
+    /*
     void Die()
     {
         GetComponent<LootBag>().InstantiateLoot(transform.position);
@@ -120,6 +123,7 @@ public class Enemy : MonoBehaviour, Damageable
         //GetComponent<SpriteRenderer>().color = Color.red;
         Destroy(gameObject);
     }
+    */
 
     IEnumerator DieElaborately()
     {
@@ -136,7 +140,9 @@ public class Enemy : MonoBehaviour, Damageable
             yield return new WaitForSeconds(.02f);
         }
 
-        GetComponent<LootBag>().InstantiateLoot(transform.position);
+        //GetComponent<LootBag>().InstantiateLoot(transform.position);
+        Instantiate(EXPPrefab, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }

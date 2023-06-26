@@ -5,8 +5,9 @@ using UnityEngine;
 public class LootBag : MonoBehaviour
 {
     public GameObject droppedItemPrefab;
-    public List<Loot> lootList = new List<Loot>();
+    //public List<Loot> lootList = new List<Loot>();
 
+    /*
     Loot GetDroppedItems()
     {
         int randomNumber = Random.Range(1, 101);
@@ -27,15 +28,19 @@ public class LootBag : MonoBehaviour
         Debug.Log("No Loot dropped");
         return null;
     }
+    */
 
     public void InstantiateLoot(Vector3 spawnPosition)
     {
+        /*
         Loot droppedItem = GetDroppedItems();
         if(droppedItem!= null)
         {
             GameObject lootGameObject = Instantiate(droppedItemPrefab,spawnPosition,Quaternion.identity);
             lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
         }
+        */
+        Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
     }
 
 }
