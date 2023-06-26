@@ -9,9 +9,10 @@ public class CharacterGameOver : MonoBehaviour
     public TextMeshProUGUI highScore;
     public AudioSource gameOverAudio;
     public AudioSource victoryAudio;
+
     public void GameOver(bool death)
     {
-        GetComponent<Player>().enabled = false;
+        GameObject.Find("Player").GetComponent<Player>().enabled = false;
         gameOverPanel.SetActive(true);
 
         AudioSource popUpSound = death ? victoryAudio : victoryAudio;
