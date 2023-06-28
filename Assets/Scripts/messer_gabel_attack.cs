@@ -45,9 +45,10 @@ public class messer_gabel_attack : WeaponBase
             direction = player.GetComponent<Rigidbody2D>().velocity.x;
         }
 
-        throwingsound.Play();
+        //throwingsound.Play();
+        throwingsound.PlayOneShot(throwingsound.clip);
 
-        if(weaponLVL == 3)
+        if (weaponLVL == 3)
         {
             shootProjectile(false);
             shootProjectile(true);

@@ -8,11 +8,12 @@ public class Weapon : MonoBehaviour
     public string weaponType;
     public int weaponLVL;
     int hits;
-    
+    private AudioSource hitAudio;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        hitAudio = GameObject.Find("SlimeHit").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,15 +26,16 @@ public class Weapon : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy")
         {
-            GameObject.Find("SlimeHit").GetComponent<AudioSource>().Play();
+            //GameObject.Find("SlimeHit").GetComponent<AudioSource>().Play();
+            hitAudio.PlayOneShot(hitAudio.clip);
 
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             if(weaponLVL >= 2)
             {
-                enemy.TakeDamage(damage+20);
+                enemy.TakeDamage(damage+20,0);
             } else
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage,0);
             }
             //enemy.CreateDamage(damage.ToString(), 0);
 

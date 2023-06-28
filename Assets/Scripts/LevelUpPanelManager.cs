@@ -43,7 +43,8 @@ public class LevelUpPanelManager : MonoBehaviour
 
     public void OpenPanel()
     {
-        popUpSound.Play();
+        //popUpSound.Play();
+        popUpSound.PlayOneShot(popUpSound.clip);
 
         pausemanager.PauseGame();
         panel.SetActive(true);
@@ -70,7 +71,8 @@ public class LevelUpPanelManager : MonoBehaviour
   
     public void Select(int pressed)
     {
-        clickSound.Play();
+        //clickSound.Play();
+        clickSound.PlayOneShot(clickSound.clip);
 
         int lvl = 0;
 

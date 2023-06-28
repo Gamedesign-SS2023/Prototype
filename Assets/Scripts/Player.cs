@@ -118,7 +118,8 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EXP"))
         {
-            pickUpExp.Play();
+            //pickUpExp.Play();
+            pickUpExp.PlayOneShot(pickUpExp.clip);
             other.gameObject.SetActive(false);
             updateExp(false);
         }
@@ -145,7 +146,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        getHit.Play();
+        //getHit.Play();
+        getHit.PlayOneShot(getHit.clip);
 
         if (isdead)
         {
@@ -160,7 +162,7 @@ public class Player : MonoBehaviour
         hpbar.SetState(hp, maxhp);
     }
 
-    public void Heal(int healamount)
+    public void Heal(float healamount)
     {
         if(hp <= 0)
         {

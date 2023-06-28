@@ -51,10 +51,11 @@ public class Attack : MonoBehaviour
             }
         }
 
-        shootingSound.Play();
+        //shootingSound.Play();
+        shootingSound.PlayOneShot(shootingSound.clip);
 
         //shoot n projectiles per lvl
-        for(int i = 0; i<=weaponLVL;i++)
+        for (int i = 0; i<=weaponLVL;i++)
         {
             if(closestEnemy.Count > weaponLVL)
             {

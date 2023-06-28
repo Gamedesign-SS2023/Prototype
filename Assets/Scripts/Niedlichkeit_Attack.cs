@@ -7,13 +7,15 @@ public class Niedlichkeit_Attack : WeaponBase
 {
     float radius = 1f;
     [SerializeField] GameObject prefab;
-    public float ttl;
+    //public float ttl;
     public int weaponLVL;
     public float damage;
+    private AudioSource hitAudio;
 
     private void Start()
     {
-        Destroy(prefab, ttl);
+        Destroy(prefab, 0);
+        hitAudio = GameObject.Find("CutenessHit").GetComponent<AudioSource>();
     }
     public override void Attack()
     {
@@ -33,14 +35,15 @@ public class Niedlichkeit_Attack : WeaponBase
             //{
             if (colliders[i].gameObject.tag == "Enemy")
             {
-                GameObject.Find("CutenessHit").GetComponent<AudioSource>().Play();
+                //GameObject.Find("CutenessHit").GetComponent<AudioSource>().Play();
+                hitAudio.PlayOneShot(hitAudio.clip);
                 if (weaponLVL == 3)
                 {
-                    colliders[i].GetComponent<Enemy>().TakeDamage(damage + 1);
+                    colliders[i].GetComponent<Enemy>().TakeDamage(damage + 1,1);
                 }
                 else
                 {
-                    colliders[i].GetComponent<Enemy>().TakeDamage(damage);
+                    colliders[i].GetComponent<Enemy>().TakeDamage(damage,1);
                 }
             }
             if (colliders[i].gameObject.tag == "Barrel")

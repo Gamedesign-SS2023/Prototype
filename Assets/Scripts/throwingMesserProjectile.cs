@@ -12,6 +12,7 @@ public class throwingMesserProjectile : MonoBehaviour
     //public float timeToLive = 3;
     int hits;
     public int weaponLVL;
+    private AudioSource hitAudio;
 
     /*
     public void SetDirection(float x,float y)
@@ -64,19 +65,25 @@ public class throwingMesserProjectile : MonoBehaviour
     }
 */
 
+    private void Start()
+    {
+        hitAudio = GameObject.Find("KnifeForkHit").GetComponent<AudioSource>();
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Enemy")
         {
-            GameObject.Find("KnifeForkHit").GetComponent<AudioSource>().Play();
+            //GameObject.Find("KnifeForkHit").GetComponent<AudioSource>().Play();
+            hitAudio.PlayOneShot(hitAudio.clip);
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             if (weaponLVL >= 2)
             {
-                enemy.TakeDamage(damage + 10);
+                enemy.TakeDamage(damage + 10,2);
             }
             else
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage,2);
             }
             //enemy.CreateDamage(damage.ToString(), 0);
 

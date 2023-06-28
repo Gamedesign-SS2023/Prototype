@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, Damageable
+public class Enemy : MonoBehaviour //, Damageable
 {
     // public static event Action<Enemy> OnEnemyKilled;
     //Attribute vom Enemy
@@ -13,29 +13,36 @@ public class Enemy : MonoBehaviour, Damageable
     [SerializeField] float moveSpeed;
     [SerializeField] int damage;
 
-    Rigidbody2D rb;
-    Transform target;
-    GameObject targetObject;
-    Player player;
+    //Rigidbody2D rb;
+    //Transform target;
+    //GameObject targetObject;
+    GameObject player;
 
     public GameObject damagePre;
     public GameObject EXPPrefab;
+    public GameObject EXPGenocide;
+    public GameObject EXPPacifist;
+
+    private AudioSource deathAudio;
 
     private void Awake()
     {
-        rb= GetComponent<Rigidbody2D>();
-        target = GameObject.Find("Player").transform;
-        targetObject = target.gameObject;
+        //rb= GetComponent<Rigidbody2D>();
+        //target = GameObject.Find("Player").transform;
+        //targetObject = target.gameObject;
+        player = GameObject.Find("Player");
     }
 
     private void Start()
     {
-        maxhealth = GameObject.Find("Player").GetComponent<Player>().level * maxhealth;
+        maxhealth = player.GetComponent<Player>().level * maxhealth;
         health = maxhealth;
+
+        deathAudio = GameObject.Find("EnemyDeath").GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {
-        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         if(direction.x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
@@ -43,22 +50,24 @@ public class Enemy : MonoBehaviour, Damageable
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        rb.velocity=direction*moveSpeed;
+        GetComponent<Rigidbody2D>().velocity=direction*moveSpeed;
     }
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject == targetObject)
+        if (collision.gameObject == player)
         {
+            /*
             if (player==null)
             {
                 player=targetObject.GetComponent<Player>();
             }
-            player.TakeDamage(damage);
+            */
+            player.GetComponent<Player>().TakeDamage(damage);
         }
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount, int type)
     {
         float critChance = 10;
 
@@ -80,11 +89,11 @@ public class Enemy : MonoBehaviour, Damageable
 
         health -= damageAmount;
 
-        CreateDamage(damageAmount.ToString(), 0);
+        CreateDamage(damageAmount.ToString(), type);
 
         if (health <= 0)
         {
-            StartCoroutine(DieElaborately());
+            StartCoroutine(DieElaborately(type));
         }
 
     }
@@ -125,12 +134,13 @@ public class Enemy : MonoBehaviour, Damageable
     }
     */
 
-    IEnumerator DieElaborately()
+    IEnumerator DieElaborately(int type)
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(0.2f);
 
-        GameObject.Find("EnemyDeath").GetComponent<AudioSource>().Play();
+        //GameObject.Find("EnemyDeath").GetComponent<AudioSource>().Play();
+        deathAudio.PlayOneShot(deathAudio.clip);
 
         Color c = GetComponent<SpriteRenderer>().color;
         for (float alpha = 1f; alpha >= 0f; alpha -= 0.1f)
@@ -141,7 +151,19 @@ public class Enemy : MonoBehaviour, Damageable
         }
 
         //GetComponent<LootBag>().InstantiateLoot(transform.position);
-        Instantiate(EXPPrefab, transform.position, Quaternion.identity);
+        switch (type)
+        {
+            case 1:
+                Instantiate(EXPPacifist, transform.position, Quaternion.identity);
+                player.GetComponent<Player>().Heal(0.25f);
+                break;
+            case 2:
+                Instantiate(EXPGenocide, transform.position, Quaternion.identity);
+                break;
+            default:
+                Instantiate(EXPPrefab, transform.position, Quaternion.identity);
+                break;
+        }
 
         Destroy(gameObject);
     }

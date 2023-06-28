@@ -16,7 +16,8 @@ public class CharacterGameOver : MonoBehaviour
         gameOverPanel.SetActive(true);
 
         AudioSource popUpSound = death ? victoryAudio : victoryAudio;
-        popUpSound.Play();
+        //popUpSound.Play();
+        popUpSound.PlayOneShot(GetComponent<AudioSource>().clip);
 
         highScore.text = death ? "Game Over" : "Glückwunsch!";
         Time.timeScale = 0f;

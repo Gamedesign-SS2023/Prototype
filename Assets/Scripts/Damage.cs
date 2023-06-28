@@ -52,7 +52,6 @@ public class Damage : MonoBehaviour
         text.text = damage;
 
         Color c;
-        
         switch(type)
         {
             case 1: //Pacifist
