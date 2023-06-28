@@ -100,7 +100,7 @@ MonoBehaviour:
   timer: 0
   unlocked: 0
   cooldown: 0
-  prefab: {fileID: 5780501690310950150, guid: 7e7ba1f60c1203d4ea5e1e13795c59fc, type: 3}
+  prefab: {fileID: 5780501690310950150, guid: b87fce2bd436bb9468767044097bdb95, type: 3}
   ttl: 0
   weaponLVL: 0
-  damage: 0
+  damage: 5
