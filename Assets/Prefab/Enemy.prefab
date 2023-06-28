@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 36ef399a34e1d4d6e9fafe520195effc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -133,6 +133,8 @@ MonoBehaviour:
   damage: 1
   damagePre: {fileID: 5254632703802421620, guid: a2a5e8f3ba3f61a409b5af7a4cb7b150, type: 3}
   EXPPrefab: {fileID: 4483716038327919295, guid: f6695d591c5ae454291b1ade89473d48, type: 3}
+  EXPGenocide: {fileID: 4483716038327919295, guid: fb327daf4eba3ba46be04f00c82a7997, type: 3}
+  EXPPacifist: {fileID: 4483716038327919295, guid: 5a7e54f1fddb13844af62d170d484604, type: 3}
 --- !u!50 &7288106600911067857
 Rigidbody2D:
   serializedVersion: 4
