@@ -47959,7 +47959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1128148183
 Transform:
   m_ObjectHideFlags: 0
@@ -53317,7 +53317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1242873560}
   - component: {fileID: 1242873561}
-  - component: {fileID: 1242873562}
   m_Layer: 0
   m_Name: E4
   m_TagString: Untagged
@@ -53392,18 +53391,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1242873562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242873559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af06f431a90cf3f4fa806face03238d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1243594122
 PrefabInstance:
   m_ObjectHideFlags: 0
