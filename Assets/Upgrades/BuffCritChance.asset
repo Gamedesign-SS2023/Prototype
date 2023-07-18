@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb000daeb7b1b4a8897d2f47f9447a, type: 3}
-  m_Name: BuffXPGain
+  m_Name: BuffCritChance
   m_EditorClassIdentifier: 
+  id: critchance
   type: buff
-  upgradeName: Erfahrungsgewinn
-  icon: {fileID: 21300000, guid: b5fafa4c232601d4496f86833af3aab2, type: 3}
-  description: "Erh\xF6ht die Erfahrungspunkte pro eingesammelten EXP Drop."
+  upgradeName: kritischer Schaden
+  icon: {fileID: 21300000, guid: 6dff7e8e94ea4b24eb90473fb2c4f5b0, type: 3}
+  description: "Erh\xF6ht die Chance, kritischen Schaden zu erzielen."
   descLVL1: 
   descLVL2: 
   descLVL3: 

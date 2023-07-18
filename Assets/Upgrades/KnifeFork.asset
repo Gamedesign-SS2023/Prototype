@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb000daeb7b1b4a8897d2f47f9447a, type: 3}
   m_Name: KnifeFork
   m_EditorClassIdentifier: 
+  id: knifefork
   type: weapon
   upgradeName: Messer und Gabel
   icon: {fileID: 21300000, guid: 5c114a874a96ca2428245816146cce94, type: 3}

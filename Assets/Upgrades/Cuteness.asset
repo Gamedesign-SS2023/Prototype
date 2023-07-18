@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb000daeb7b1b4a8897d2f47f9447a, type: 3}
   m_Name: Cuteness
   m_EditorClassIdentifier: 
+  id: cuteness
   type: weapon
   upgradeName: Niedlichkeit
   icon: {fileID: 21300000, guid: 7e7e2a61fe9c5214aae314e761b73877, type: 3}

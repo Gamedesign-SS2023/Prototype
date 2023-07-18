@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2198438802970082228}
   - component: {fileID: 2198438802970082227}
   - component: {fileID: 2198438802970082226}
-  - component: {fileID: 2198438802970082224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,14 +106,10 @@ MonoBehaviour:
   EXP: 0
   hpbar: {fileID: 0}
   pickUpExp: {fileID: 0}
+  getHit: {fileID: 0}
   lvlmanager: {fileID: 0}
   animator: {fileID: 0}
-  lastHorizontalVector: 0
-  lastVertictalVector: 0
   leveluppanelmanager: {fileID: 0}
-  upgrades: []
-  selectedUpgrades: []
-  aquiredUpgrades: []
 --- !u!50 &2198438802970082227
 Rigidbody2D:
   serializedVersion: 4
@@ -152,19 +147,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2198438802970082224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2198438802970082185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001c08d17accad7438f14e6c0a6c7bf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 819760487305645297, guid: ace195d8c79a134408aaf9577237b3be, type: 3}
-  cooldown: 1.2
-  shootingSound: {fileID: 0}
-  timetoattack: 1

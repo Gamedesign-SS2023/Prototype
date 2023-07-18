@@ -13,60 +13,54 @@ public class UpgradeButton : MonoBehaviour
     public TextMeshProUGUI upgradeDesc;
     public TextMeshProUGUI upgradeLVL;
 
-    /*
-    public void Set(UpgradeData upgradeData)
-    {
-        icon.sprite = upgradeData.icon;
-    }
-    */
-    public void Set(PowerUps upgradeData)
+    public void Set(Upgrades upgradeData)
     {
         icon.sprite = upgradeData.icon;
         upgradeName.text = upgradeData.upgradeName;
 
         int lvl = 0;
 
-        switch (upgradeData.upgradeName)
+        switch (upgradeData.id)
         {
-            case "HP":
+            case "hp":
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffHP;
                 break;
 
-            case "Geschwindigkeit":
+            case "speed":
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
                 break;
 
-            case "kritischer Schaden":
+            case "critchance":
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance;
                 break;
 
-            case "Basisschaden":
+            case "base damage":
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage;
                 break;
 
-            case "Erfahrungsgewinn":
+            case "xpgain":
                 lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain;
                 break;
-            case "Schleim":
-                lvl = GameObject.Find("Player").GetComponent<Attack>().weaponLVL;
+            case "slime":
+                lvl = GameObject.Find("wpn_slime").GetComponent<AttackSlime>().weaponLVL;
                 break;
-            case "Niedlichkeit":
-                if(!GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().unlocked)
+            case "cuteness":
+                if(!GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>().unlocked)
                 {
                     lvl = 4;
                 } else
                 {
-                    lvl = GameObject.Find("wpn_cuteness").GetComponent<Niedlichkeit_Attack>().weaponLVL;
+                    lvl = GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>().weaponLVL;
                 }
                 break;
-            case "Messer und Gabel":
-                if (!GameObject.Find("wpn_knifefork").GetComponent<messer_gabel_attack>().unlocked)
+            case "knifefork":
+                if (!GameObject.Find("wpn_knifefork").GetComponent<AttackKnifeFork>().unlocked)
                 {
                     lvl = 4;
                 }
                 else
                 {
-                    lvl = GameObject.Find("wpn_knifefork").GetComponent<messer_gabel_attack>().weaponLVL;
+                    lvl = GameObject.Find("wpn_knifefork").GetComponent<AttackKnifeFork>().weaponLVL;
                 }
                 break;
         }

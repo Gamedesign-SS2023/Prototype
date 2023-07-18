@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class ProjectileSlime : MonoBehaviour
 {
     public int damage;
     public string weaponType;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3718921201146949511}
   - component: {fileID: 1876467496629553094}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: prjtl_slime
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   weaponType: Neutral
+  weaponLVL: 0

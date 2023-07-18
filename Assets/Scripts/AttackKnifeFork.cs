@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class messer_gabel_attack : WeaponBase
+public class AttackKnifeFork : WeaponBase
 {
     [SerializeField] private AudioSource throwingsound;
     [SerializeField] GameObject messerGabelPrefab;
@@ -47,7 +47,7 @@ public class messer_gabel_attack : WeaponBase
     {
         GameObject projectile = Instantiate(messerGabelPrefab, transform.position, transform.rotation);
         projectile.transform.parent = transform;
-        projectile.GetComponent<throwingMesserProjectile>().weaponLVL = weaponLVL;
+        projectile.GetComponent<ProjectileKnifeFork>().weaponLVL = weaponLVL;
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 

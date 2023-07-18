@@ -4,7 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class throwingMesserProjectile : MonoBehaviour
+public class ProjectileKnifeFork : MonoBehaviour
 {
     [SerializeField] public float damage;
     int hits;

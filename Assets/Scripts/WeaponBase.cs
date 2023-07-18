@@ -18,7 +18,7 @@ public abstract class WeaponBase : MonoBehaviour
     public void unlock()
     {
         unlocked = true;
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        //gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void Update()

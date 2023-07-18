@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
 
-public class Niedlichkeit_Attack : WeaponBase
+public class AttackCuteness : WeaponBase
 {
     float radius = 1f;
     [SerializeField] GameObject prefab;
-    //public float ttl;
     public int weaponLVL;
     public float damage;
     private AudioSource hitAudio;

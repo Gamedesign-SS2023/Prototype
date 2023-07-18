@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class AttackSlime : MonoBehaviour
 {
     public GameObject weapon;
     public float cooldown;
@@ -57,7 +57,7 @@ public class Attack : MonoBehaviour
     void shootProjectile(GameObject closestEnemy)
     {
         GameObject projectile = Instantiate(weapon, transform.position, transform.rotation);
-        projectile.GetComponent<Weapon>().weaponLVL = weaponLVL;
+        projectile.GetComponent<ProjectileSlime>().weaponLVL = weaponLVL;
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         Vector2 direction = (closestEnemy.transform.position - transform.position);
