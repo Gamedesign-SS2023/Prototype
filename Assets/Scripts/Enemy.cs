@@ -13,9 +13,6 @@ public class Enemy : MonoBehaviour //, Damageable
     [SerializeField] float moveSpeed;
     [SerializeField] int damage;
 
-    //Rigidbody2D rb;
-    //Transform target;
-    //GameObject targetObject;
     GameObject player;
 
     public GameObject damagePre;
@@ -27,9 +24,6 @@ public class Enemy : MonoBehaviour //, Damageable
 
     private void Awake()
     {
-        //rb= GetComponent<Rigidbody2D>();
-        //target = GameObject.Find("Player").transform;
-        //targetObject = target.gameObject;
         player = GameObject.Find("Player");
     }
 
@@ -98,25 +92,6 @@ public class Enemy : MonoBehaviour //, Damageable
 
     }
 
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Weapon"))
-        {
-            float damageNum = collision.GetComponent<Weapon>().GetDamage();
-            //string weapontype = collision.GetComponent<Weapon>().GetType();
-            CreateDamage(damageNum.ToString(),0);
-        }
-        if (collision.CompareTag("MesserGabel"))
-        {
-            float damageNum = collision.GetComponent<throwingMesserProjectile>().damage;
-            //string weapontype = collision.GetComponent<Weapon>().GetType();
-            CreateDamage(damageNum.ToString(),2);
-
-        }
-    }
-    */
-
     public void CreateDamage(string damageNumstr,int type)
     {
         GameObject damagenum = ObjectPool.Instance.Get(damagePre);
@@ -124,15 +99,6 @@ public class Enemy : MonoBehaviour //, Damageable
         damagenum.GetComponent<Damage>().Init(damageNumstr,type);
 
     }
-    /*
-    void Die()
-    {
-        GetComponent<LootBag>().InstantiateLoot(transform.position);
-
-        //GetComponent<SpriteRenderer>().color = Color.red;
-        Destroy(gameObject);
-    }
-    */
 
     IEnumerator DieElaborately(int type)
     {
@@ -149,6 +115,12 @@ public class Enemy : MonoBehaviour //, Damageable
             GetComponent<SpriteRenderer>().color = c;
             yield return new WaitForSeconds(.02f);
         }
+
+        //randomize exp if neutral weapon
+        //if(type == 0)
+        //{
+        //    type = UnityEngine.Random.Range(1, 2);
+        //}
 
         //GetComponent<LootBag>().InstantiateLoot(transform.position);
         switch (type)

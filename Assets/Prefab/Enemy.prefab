@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7288106600911067863}
   - component: {fileID: 7288106600911067862}
   - component: {fileID: 7288106600911067857}
-  - component: {fileID: 4349275397469502214}
   - component: {fileID: 825875737715563301}
   m_Layer: 0
   m_Name: Enemy
@@ -156,19 +155,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4349275397469502214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7288106600911067856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb2fe4725556b442bfcb2ed9bfc5377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 4483716038327919295, guid: f6695d591c5ae454291b1ade89473d48, type: 3}
 --- !u!95 &825875737715563301
 Animator:
   serializedVersion: 5

@@ -6,7 +6,6 @@ using UnityEngine;
 public class messer_gabel_attack : WeaponBase
 {
     [SerializeField] private AudioSource throwingsound;
-    //[SerializeField] float spread = 0.5f;
     [SerializeField] GameObject messerGabelPrefab;
     Player player;
     public int weaponLVL;
@@ -20,26 +19,6 @@ public class messer_gabel_attack : WeaponBase
 
     public override void Attack()
     {
-        /*
-        for (int i = 0; i < numberOfAttacks; i++)
-        {
-            GameObject throwingMesser = Instantiate(messerGabelPrefab);
-            Vector3 Newknifepos = transform.position;
-
-            if (numberOfAttacks > 1)
-            {
-                Newknifepos.y -= (spread * (numberOfAttacks-1)) / 2;
-                Newknifepos.y += i * spread;
-            }
-            
-            throwingMesser.transform.position = Newknifepos;
-            throwingMesserProjectile throwingMesserProjectile = throwingMesser.GetComponent<throwingMesserProjectile>();
-            throwingsound.Play();
-            throwingMesserProjectile.SetDirection(player.lastHorizontalCoupledVector, player.lastVertictalCoupledVector);
-            throwingMesserProjectile.damage = damage;
-        }
-        */
-
         if(player.GetComponent<Rigidbody2D>().velocity.x != 0f)
         {
             direction = player.GetComponent<Rigidbody2D>().velocity.x;

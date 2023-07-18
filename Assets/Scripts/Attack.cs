@@ -5,7 +5,6 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public GameObject weapon;
-    //public float weaponSpeed;
     public float cooldown;
     [SerializeField] private AudioSource shootingSound;
     public int weaponLVL;
@@ -19,15 +18,6 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (timer < timetoattack)
-        {
-            timer += Time.deltaTime;
-            return;
-        }
-        timer = 0;
-        autoAttack();
-        */
     }
 
     void autoAttack()
