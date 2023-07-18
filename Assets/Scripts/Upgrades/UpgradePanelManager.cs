@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LevelUpPanelManager : MonoBehaviour
+public class UpgradePanelManager : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     Pausemanager pausemanager;
     [SerializeField] List<UpgradeButton> upgradebuttons;
-    //Player player;
-    public List<Upgrades> upgrades;
+    public List<UpgradeData> upgrades;
     public GameObject optionPrefab;
     public AudioSource popUpSound;
     public AudioSource clickSound;
@@ -20,7 +19,7 @@ public class LevelUpPanelManager : MonoBehaviour
         pausemanager = GetComponent<Pausemanager>();
     }
 
-    public List<Upgrades> Shuffle(List<Upgrades> listToShuffle)
+    public List<UpgradeData> Shuffle(List<UpgradeData> listToShuffle)
     {
         var rnd = new System.Random();
         var shuffledList = listToShuffle.OrderBy(_ => rnd.Next()).ToList();

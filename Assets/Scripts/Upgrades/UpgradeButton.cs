@@ -13,7 +13,7 @@ public class UpgradeButton : MonoBehaviour
     public TextMeshProUGUI upgradeDesc;
     public TextMeshProUGUI upgradeLVL;
 
-    public void Set(Upgrades upgradeData)
+    public void Set(UpgradeData upgradeData)
     {
         icon.sprite = upgradeData.icon;
         upgradeName.text = upgradeData.upgradeName;

@@ -12,19 +12,29 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Input needs to be in SECONDS")]
     public int levelEnd;
 
-    [Header("Spawn")]
+    [Header("Enemies")]
     public GameObject enemyPrefab;
-    public GameObject barrelPrefab;
+    [Tooltip("GameObject the enemies are supposed to spawn in")]
+    public GameObject enemyParent;
 
     [Header("EXP")]
     public Slider expSlider;
     public TextMeshProUGUI level;
 
+    [Header("Barrels")]
+    public bool barrelSpawnActive = true;
+    public GameObject barrelPrefab;
+    [Tooltip("GameObject the barrels are supposed to spawn in")]
+    public GameObject barrelParent;
+
     private float timeStamp = 0;
 
     void Start()
     {
-        InvokeRepeating("barrelSpawn", 0, 20);
+        if(barrelSpawnActive)
+        {
+            InvokeRepeating("barrelSpawn", 0, 20);
+        }
     }
 
     // Update is called once per frame
@@ -79,7 +89,8 @@ public class LevelManager : MonoBehaviour
                     break;
             }
 
-            Instantiate(enemy, spawnPos, Quaternion.identity);
+            GameObject spawn = Instantiate(enemy, spawnPos, Quaternion.identity);
+            spawn.transform.SetParent(enemyParent.transform);
         }
     }
 
@@ -101,6 +112,7 @@ public class LevelManager : MonoBehaviour
             UnityEngine.Random.Range(-50f, 50f),
             0);
 
-        Instantiate(barrelPrefab, spawnPos, Quaternion.identity);
+        GameObject spawn = Instantiate(barrelPrefab, spawnPos, Quaternion.identity);
+        spawn.transform.SetParent(barrelParent.transform);
     }
 }

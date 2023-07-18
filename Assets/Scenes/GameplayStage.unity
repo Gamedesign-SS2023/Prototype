@@ -2230,6 +2230,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5780501690310950150, guid: b87fce2bd436bb9468767044097bdb95, type: 3}
     - target: {fileID: 3074144141955943882, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
+      propertyPath: cooldown
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074144141955943882, guid: e45d690894741ee4198146fd66dc1c4e, type: 3}
       propertyPath: unlocked
       value: 0
       objectReference: {fileID: 0}
@@ -21471,14 +21475,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1917685733}
     m_Modifications:
-    - target: {fileID: 1920540345709455425, guid: c30abc16b4776824d89149fea57d627d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920540345709455425, guid: c30abc16b4776824d89149fea57d627d, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1920540345709455426, guid: c30abc16b4776824d89149fea57d627d, type: 3}
       propertyPath: speed
       value: 8
@@ -21563,8 +21559,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1920540345709455425, guid: c30abc16b4776824d89149fea57d627d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30abc16b4776824d89149fea57d627d, type: 3}
 --- !u!1001 &515249624
 PrefabInstance:
@@ -33035,6 +33030,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &784209580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 784209581}
+  m_Layer: 0
+  m_Name: Barrels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &784209581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784209580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 360, y: 178.251, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &784713035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47236,26 +47262,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 819760487305645297, guid: ace195d8c79a134408aaf9577237b3be, type: 3}
-    - target: {fileID: 0}
-      propertyPath: cooldown
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: timetoattack
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: shootingSound
-      value: 
-      objectReference: {fileID: 1473411309}
     - target: {fileID: 2198438802970082226, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
       propertyPath: m_Radius
       value: 0.36883035
@@ -50320,9 +50326,12 @@ MonoBehaviour:
   timerText: {fileID: 1269017724}
   levelEnd: 180
   enemyPrefab: {fileID: 7288106600911067856, guid: 1d639b78395188549b59da425fdd0ace, type: 3}
-  barrelPrefab: {fileID: 6168623301029478673, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
+  enemyParent: {fileID: 2011975068}
   expSlider: {fileID: 576142793}
   level: {fileID: 757689944}
+  barrelSpawnActive: 1
+  barrelPrefab: {fileID: 6168623301029478673, guid: 6faa6e4570de6b84cbf0b3cf98968aa9, type: 3}
+  barrelParent: {fileID: 784209580}
 --- !u!114 &1185163376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86505,6 +86514,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4655a38557ae6f74aa444308ab1ee807, type: 3}
+--- !u!1 &2011975068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011975069}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011975069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011975068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 360, y: 178.251, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2012930074
 PrefabInstance:
   m_ObjectHideFlags: 0

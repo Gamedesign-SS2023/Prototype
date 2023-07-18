@@ -25,9 +25,9 @@ public class AttackCuteness : WeaponBase
 
     public override void Attack()
     {
-        GameObject spawnniedlichkeit = Instantiate(prefab);
-        spawnniedlichkeit.transform.position = transform.position;
-        spawnniedlichkeit.transform.parent = transform;
+        GameObject projectile = Instantiate(prefab, transform.position, transform.rotation);
+        projectile.transform.SetParent(gameObject.transform);
+
         if (weaponLVL >= 1)
         {
             radius = 2f;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class Upgrades : ScriptableObject
+public class UpgradeData : ScriptableObject
 {
     public string id;
     public string type;

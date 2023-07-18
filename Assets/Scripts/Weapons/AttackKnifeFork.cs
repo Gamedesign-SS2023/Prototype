@@ -46,7 +46,7 @@ public class AttackKnifeFork : WeaponBase
     void shootProjectile(bool right)
     {
         GameObject projectile = Instantiate(messerGabelPrefab, transform.position, transform.rotation);
-        projectile.transform.parent = transform;
+        projectile.transform.SetParent(gameObject.transform);
         projectile.GetComponent<ProjectileKnifeFork>().weaponLVL = weaponLVL;
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();

@@ -20,7 +20,7 @@ public class AttackSlime : MonoBehaviour
     {
     }
 
-    void autoAttack()
+    public void Attack()
     {
         // calculate closest enemy to attack
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -57,6 +57,7 @@ public class AttackSlime : MonoBehaviour
     void shootProjectile(GameObject closestEnemy)
     {
         GameObject projectile = Instantiate(weapon, transform.position, transform.rotation);
+        projectile.transform.SetParent(gameObject.transform);
         projectile.GetComponent<ProjectileSlime>().weaponLVL = weaponLVL;
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();

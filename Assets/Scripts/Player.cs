@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public LevelManager lvlmanager;
     public Animator animator;
 
-    [SerializeField] LevelUpPanelManager leveluppanelmanager;
+    [SerializeField] UpgradePanelManager leveluppanelmanager;
 
     Rigidbody2D rb;
     private Vector3 moveDirection;
