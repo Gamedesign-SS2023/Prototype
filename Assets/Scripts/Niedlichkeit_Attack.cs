@@ -17,6 +17,13 @@ public class Niedlichkeit_Attack : WeaponBase
         Destroy(prefab, 0);
         hitAudio = GameObject.Find("CutenessHit").GetComponent<AudioSource>();
     }
+
+    public void unlock()
+    {
+        unlocked = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     public override void Attack()
     {
         GameObject spawnniedlichkeit = Instantiate(prefab);
@@ -30,9 +37,6 @@ public class Niedlichkeit_Attack : WeaponBase
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         for (int i = 0; i < colliders.Length; i++)
         {
-            //Damageable d = hit[i].GetComponent<Damageable>();
-            //if(d != null)
-            //{
             if (colliders[i].gameObject.tag == "Enemy")
             {
                 //GameObject.Find("CutenessHit").GetComponent<AudioSource>().Play();
@@ -50,7 +54,6 @@ public class Niedlichkeit_Attack : WeaponBase
             {
                 Destroy(colliders[i].gameObject);
             }
-            //}
         }
     }
 }
