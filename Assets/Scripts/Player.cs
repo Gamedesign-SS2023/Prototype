@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -21,13 +22,14 @@ public class Player : MonoBehaviour
 
     [Header("Backend")]
     public LevelManager lvlmanager;
-    public Animator animator;
+
 
     [SerializeField] UpgradePanelManager leveluppanelmanager;
 
     Rigidbody2D rb;
     private Vector3 moveDirection;
     private bool isdead = false;
+    Animator animator;
 
     private void Awake()
     {
@@ -42,6 +44,9 @@ public class Player : MonoBehaviour
         lvlmanager.updateExperienceBar(EXP, 10);
         lvlmanager.setLevelText(level);
         hp = maxhp;
+
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
@@ -51,11 +56,24 @@ public class Player : MonoBehaviour
         moveDirection.y = Input.GetAxis("Vertical");
 
         rb.velocity = moveDirection * moveSpeed;
-        animator.SetFloat("Horizontal",moveDirection.x);
-        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
-        if(EXP >= lvlmanager.expSlider.maxValue){
-            LevelUp(); 
+        // sprite animation control
+        if(moveDirection.x != 0)
+        {
+            animator.SetFloat("Horizontal", moveDirection.x);
+        }
+
+        if((moveDirection.x == 0) && animator.GetBool("Movement"))
+        {
+            animator.SetBool("Movement", false);
+        }
+        if ((moveDirection.x != 0) && !animator.GetBool("Movement"))
+        {
+            animator.SetBool("Movement", true);
+        }
+
+        if (EXP >= lvlmanager.expSlider.maxValue){
+            LevelUp();
         }
     }
 
@@ -83,6 +101,8 @@ public class Player : MonoBehaviour
         //getHit.Play();
         getHit.PlayOneShot(getHit.clip);
 
+        animator.SetTrigger("Hurt");
+
         if (isdead)
         {
             return;
@@ -93,6 +113,7 @@ public class Player : MonoBehaviour
             GameObject.Find("Managers").GetComponent<CharacterGameOver>().GameOver(true);
             isdead = true;
         }
+
         hpbar.SetState(hp, maxhp);
     }
 
