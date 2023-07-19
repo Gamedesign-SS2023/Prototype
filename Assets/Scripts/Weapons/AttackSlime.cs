@@ -12,7 +12,7 @@ public class AttackSlime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("autoAttack", 0, cooldown);
+        InvokeRepeating("Attack", 0, cooldown);
     }
 
     // Update is called once per frame
