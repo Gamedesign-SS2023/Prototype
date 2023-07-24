@@ -13,6 +13,7 @@ public class UpgradePanelManager : MonoBehaviour
     public GameObject optionPrefab;
     public AudioSource popUpSound;
     public AudioSource clickSound;
+    public GameObject empty;
 
     private void Awake()
     {
@@ -34,13 +35,28 @@ public class UpgradePanelManager : MonoBehaviour
         pausemanager.PauseGame();
         panel.SetActive(true);
 
-        upgrades = Shuffle(upgrades);
-        for (int i = 0; i < upgradebuttons.Count; i++)
+        if(upgrades.Count == 0)
         {
-            if(upgrades[i] != null)
+            upgradebuttons[0].gameObject.SetActive(false);
+            empty.SetActive(true);
+        } else
+        {
+            if(upgrades.Count > 1)
             {
-                upgradebuttons[i].gameObject.SetActive(true);
-                upgradebuttons[i].Set(upgrades[i]);
+                upgrades = Shuffle(upgrades);
+            }
+
+            for (int i = 0; i < upgradebuttons.Count; i++)
+            {
+                if (i < upgrades.Count)
+                {
+                    upgradebuttons[i].gameObject.SetActive(true);
+                    upgradebuttons[i].Set(upgrades[i]);
+                }
+                else
+                {
+                    upgradebuttons[i].gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -52,88 +68,95 @@ public class UpgradePanelManager : MonoBehaviour
 
         int lvl = 0;
 
-        switch (upgrades[pressed].id)
+        if(pressed == 4)
         {
-            case "hp":
-                GameObject.Find("Buffs").GetComponent<Buffs>().buffHP++;
-                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffHP;
+            GameObject.Find("Player").GetComponent<Player>().Heal(20f);
+        } else
+        {
+            switch (upgrades[pressed].id)
+            {
+                case "hp":
+                    GameObject.Find("Buffs").GetComponent<Buffs>().buffHP++;
+                    lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffHP;
 
-                GameObject.Find("Player").GetComponent<Player>().maxhp *= (1.1f * lvl);
+                    GameObject.Find("Player").GetComponent<Player>().maxhp *= (1.1f * lvl);
 
-                break;
+                    break;
 
-            case "speed":
-                GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed++;
-                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
+                case "speed":
+                    GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed++;
+                    lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
 
-                GameObject.Find("Player").GetComponent<Player>().moveSpeed += lvl * 2;
+                    GameObject.Find("Player").GetComponent<Player>().moveSpeed += lvl * 2;
 
-                break;
+                    break;
 
-            case "critchance":
-                GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance++;
-                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance;
-                break;
+                case "critchance":
+                    GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance++;
+                    lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance;
+                    break;
 
-            case "basedamage":
-                GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage++;
-                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage;
-                break;
+                case "basedamage":
+                    GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage++;
+                    lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage;
+                    break;
 
-            case "xpgain":
-                GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain++;
-                lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain;
-                break;
+                case "xpgain":
+                    GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain++;
+                    lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain;
+                    break;
 
-            case "slime":
-                GameObject.Find("wpn_slime").GetComponent<AttackSlime>().weaponLVL++;
-                lvl = GameObject.Find("wpn_slime").GetComponent<AttackSlime>().weaponLVL;
+                case "slime":
+                    GameObject.Find("wpn_slime").GetComponent<AttackSlime>().weaponLVL++;
+                    lvl = GameObject.Find("wpn_slime").GetComponent<AttackSlime>().weaponLVL;
 
-                if(lvl == 1)
-                {
-                    GameObject.Find("wpn_slime").GetComponent<AttackSlime>().cooldown -= 0.2f;
-                }
+                    if (lvl == 1)
+                    {
+                        GameObject.Find("wpn_slime").GetComponent<AttackSlime>().cooldown -= 0.2f;
+                    }
 
-                break;
+                    break;
 
-            case "cuteness":
+                case "cuteness":
 
-                AttackCuteness cuteness = GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>();
+                    AttackCuteness cuteness = GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>();
 
-                if (cuteness.unlocked)
-                {
-                    cuteness.weaponLVL++;
-                    lvl = cuteness.weaponLVL;
-                } else
-                {
-                    cuteness.unlock();
-                }
+                    if (cuteness.unlocked)
+                    {
+                        cuteness.weaponLVL++;
+                        lvl = cuteness.weaponLVL;
+                    }
+                    else
+                    {
+                        cuteness.unlock();
+                    }
 
-                if(lvl == 1)
-                {
-                    cuteness.transform.localScale += new Vector3(1.5f, 1.5f, 0);
-                }
+                    if (lvl == 1)
+                    {
+                        cuteness.transform.localScale += new Vector3(1.5f, 1.5f, 0);
+                    }
 
-                if (lvl == 2)
-                {
-                    GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>().cooldown -= 0.3f;
-                }
+                    if (lvl == 2)
+                    {
+                        GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>().cooldown -= 0.3f;
+                    }
 
-                break;
+                    break;
 
-            case "knifefork":
+                case "knifefork":
 
-                AttackKnifeFork knifefork = GameObject.Find("wpn_knifefork").GetComponent<AttackKnifeFork>();
-                if (knifefork.unlocked)
-                {
-                    knifefork.weaponLVL++;
-                    lvl = knifefork.weaponLVL;
-                }
-                else
-                {
-                    knifefork.unlock();
-                }
-                break;
+                    AttackKnifeFork knifefork = GameObject.Find("wpn_knifefork").GetComponent<AttackKnifeFork>();
+                    if (knifefork.unlocked)
+                    {
+                        knifefork.weaponLVL++;
+                        lvl = knifefork.weaponLVL;
+                    }
+                    else
+                    {
+                        knifefork.unlock();
+                    }
+                    break;
+            }
         }
 
         if (lvl == 3)

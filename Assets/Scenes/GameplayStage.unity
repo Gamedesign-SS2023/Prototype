@@ -47343,9 +47343,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d3d6a06d789612840a857ea8d93fa711, type: 2}
     - target: {fileID: 2198438802970082230, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198438802970082230, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198438802970082230, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 917724878, guid: 727d968c4b9b4e449bececb98ff4e526, type: 3}
+      objectReference: {fileID: 1629802272, guid: a989dbce5123c4e4bb91faa08bb1d3fe, type: 3}
     - target: {fileID: 2198438802970082230, guid: ce2a98c92bc2a7441ab091be0add5a6d, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -83079,7 +83087,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.875, y: 0.4375}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.875, y: 0.4375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
