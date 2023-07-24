@@ -27,7 +27,7 @@ public class AttackSlime : MonoBehaviour
         if (enemies.Length == 0) return; //don't attack if there are no enemies around
 
         List<GameObject> closestEnemy = new List<GameObject>();
-        closestEnemy.Add(enemies[0]);
+        for (int i = 0; i <= weaponLVL; i++) closestEnemy.Add(enemies[i]); //populate with enough enemies to sort
 
         for (int i = 1; i < enemies.Length; i++)
         {
