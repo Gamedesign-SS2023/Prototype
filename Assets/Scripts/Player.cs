@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
         hp -= damageAmount;
         if (hp <= 0)
         {
-            GameObject.Find("Managers").GetComponent<CharacterGameOver>().GameOver(true);
+            GameObject.Find("Managers").GetComponent<GameOver>().GameOverPanel(true);
             isdead = true;
         }
 

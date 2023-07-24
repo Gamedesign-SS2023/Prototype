@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CharacterGameOver : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    public TextMeshProUGUI highScore;
+    //public TextMeshProUGUI highScore;
     public AudioSource gameOverAudio;
     public AudioSource victoryAudio;
 
-    public void GameOver(bool death)
+    public void GameOverPanel(bool death)
     {
         GameObject.Find("Player").GetComponent<Player>().enabled = false;
         gameOverPanel.SetActive(true);
 
         AudioSource popUpSound = death ? victoryAudio : victoryAudio;
         //popUpSound.Play();
-        popUpSound.PlayOneShot(GetComponent<AudioSource>().clip);
+        //popUpSound.PlayOneShot(GetComponent<AudioSource>().clip);
 
-        highScore.text = death ? "Game Over" : "Glückwunsch!";
+        //highScore.text = death ? "Game Over" : "Glückwunsch!";
         Time.timeScale = 0f;
     }
 }

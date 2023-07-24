@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        if(barrelSpawnActive)
+        if (barrelSpawnActive)
         {
             InvokeRepeating("barrelSpawn", 0, 20);
         }
@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
 
         if (timeStamp >= levelEnd)
         {
-            GameObject.Find("Player").GetComponent<CharacterGameOver>().GameOver(false);
+            GameObject.Find("Player").GetComponent<GameOver>().GameOverPanel(false);
         }
     }
 
