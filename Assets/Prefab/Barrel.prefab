@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5052499132618519937}
   - component: {fileID: 1474803741099643494}
   - component: {fileID: -5752628944097780314}
-  - component: {fileID: -6087025631511026118}
+  - component: {fileID: 7008966639477294113}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Barrel
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53125, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &-6087025631511026118
+--- !u!114 &7008966639477294113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,4 +125,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Drop: {fileID: 7091164602382169636, guid: e5bb953a723d84842814a4059dbea8e7, type: 3}
-  dropchance: 1

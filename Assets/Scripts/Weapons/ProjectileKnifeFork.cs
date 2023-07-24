@@ -42,9 +42,5 @@ public class ProjectileKnifeFork : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (collider.gameObject.tag == "Barrel")
-        {
-            Destroy(collider.gameObject);
-        }
     }
 }
