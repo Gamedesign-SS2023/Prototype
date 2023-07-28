@@ -152,7 +152,7 @@ public class Enemy : MonoBehaviour //, Damageable
                 Instantiate(EXPPrefab, transform.position, Quaternion.identity);
                 break;
         }
-
         Destroy(gameObject);
+        
     }
 }

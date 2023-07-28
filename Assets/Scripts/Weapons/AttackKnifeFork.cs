@@ -9,9 +9,12 @@ public class AttackKnifeFork : WeaponBase
     [SerializeField] GameObject messerGabelPrefab;
     public int weaponLVL;
     public float speed;
+    Vector2 dir;
+    Player player;
 
     private void Awake()
     {
+        player = GetComponentInParent<Player>();
     }
 
     public override void Attack()
@@ -25,7 +28,7 @@ public class AttackKnifeFork : WeaponBase
             shootProjectile(true);
         } else
         {
-            if (Input.GetAxis("Horizontal") < 0)
+            if (player.lastHorizontalVector < 0)
             {
                 shootProjectile(false);
             } else
@@ -33,18 +36,20 @@ public class AttackKnifeFork : WeaponBase
                 shootProjectile(true);
             }
         }
+        
     }
 
     void shootProjectile(bool left)
-    {
+    {   
         GameObject projectile = Instantiate(messerGabelPrefab, transform.position, transform.rotation);
         projectile.transform.SetParent(gameObject.transform);
         projectile.GetComponent<ProjectileKnifeFork>().weaponLVL = weaponLVL;
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-
-        projectile.GetComponent<SpriteRenderer>().flipX = left;
-        int horizontal = left ? (-1) : 1;
+        
+        projectile.GetComponent<SpriteRenderer>().flipX = !left;
+        int horizontal = left ? (1) : -1;
         rb.velocity = horizontal * transform.right * speed;
+
     }
 }

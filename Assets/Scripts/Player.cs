@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     private bool isdead = false;
     Animator animator;
 
+    public float lastHorizontalVector;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
     {
         lvlmanager.updateExperienceBar(EXP, 10);
         lvlmanager.setLevelText(level);
+        lvlmanager.setKillsText(0);
         hp = maxhp;
 
         animator = GetComponentInChildren<Animator>();
@@ -54,6 +57,11 @@ public class Player : MonoBehaviour
     {
         moveDirection.x = Input.GetAxis("Horizontal");
         moveDirection.y = Input.GetAxis("Vertical");
+
+        if(moveDirection.x != 0)
+        {
+            lastHorizontalVector=moveDirection.x;
+        }
 
         rb.velocity = moveDirection * moveSpeed;
 
