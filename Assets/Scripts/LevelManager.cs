@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
 
 
     private float timeStamp = 0;
+    private bool gameOver;
 
     void Start()
     {
@@ -52,7 +53,12 @@ public class LevelManager : MonoBehaviour
 
         if (timeStamp >= levelEnd)
         {
-            GameObject.Find("Player").GetComponent<GameOver>().GameOverPanel(false);
+            if (!gameOver)
+            {
+                gameOver = true;
+                GetComponent<GameOver>().GameOverPanel(false);
+            }
+            
         }
     }
 
