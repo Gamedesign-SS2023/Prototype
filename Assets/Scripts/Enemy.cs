@@ -36,15 +36,22 @@ public class Enemy : MonoBehaviour //, Damageable
     }
     private void FixedUpdate()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        if(direction.x < 0)
+        if(gameObject.CompareTag("Enemy"))
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            if (direction.x < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            GetComponent<Rigidbody2D>().velocity = direction * moveSpeed;
         } else
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f);
         }
-        GetComponent<Rigidbody2D>().velocity=direction*moveSpeed;
     }
 
     public void OnCollisionStay2D(Collision2D collision)
@@ -102,7 +109,23 @@ public class Enemy : MonoBehaviour //, Damageable
 
     IEnumerator DieElaborately(int type)
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        transform.gameObject.tag = "Untagged"; //stop including in weapon's targeting
+
+        Color death = Color.red;
+        switch (type)
+        {
+            case 1:
+                death = Color.green;
+                break;
+            case 2:
+                death = Color.red;
+                break;
+            default:
+                death = Color.white;
+                break;
+        }
+
+        GetComponent<SpriteRenderer>().color = death;
         yield return new WaitForSeconds(0.2f);
 
         //GameObject.Find("EnemyDeath").GetComponent<AudioSource>().Play();
@@ -116,13 +139,6 @@ public class Enemy : MonoBehaviour //, Damageable
             yield return new WaitForSeconds(.02f);
         }
 
-        //randomize exp if neutral weapon
-        //if(type == 0)
-        //{
-        //    type = UnityEngine.Random.Range(1, 2);
-        //}
-
-        //GetComponent<LootBag>().InstantiateLoot(transform.position);
         switch (type)
         {
             case 1:
