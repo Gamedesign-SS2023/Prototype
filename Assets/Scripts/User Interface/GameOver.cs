@@ -7,14 +7,23 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    //public TextMeshProUGUI highScore;
     public AudioSource gameOverAudio;
     public AudioSource victoryAudio;
+    public TextMeshProUGUI title;
+
+    [Header("Statistics")]
+    public TextMeshProUGUI statistics;
+    public float highScore = 0;
+    public int friends = 0;
+    public int foes = 0;
 
     public void GameOverPanel(bool death)
     {
         AudioSource popUpSound = death ? gameOverAudio : victoryAudio;
         popUpSound.Play();
+
+        title.text = death ? "Game Over" : "Glückwunsch!";
+        statistics.text = "High Score: " + highScore + " | Freunde: " + friends + " | Futter: " + foes;
 
         GetComponent<Pausemanager>().PauseGame();
 

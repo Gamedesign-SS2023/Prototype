@@ -72,6 +72,13 @@ public class Enemy : MonoBehaviour //, Damageable
     {
         float critChance = 10;
 
+        //boosts based on type
+        if(type == 1)
+        {
+            damageAmount++;
+        }
+
+        //boosts based on buffs
         Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
         if (buffs.buffBaseDamage != 0)
         {
@@ -89,6 +96,7 @@ public class Enemy : MonoBehaviour //, Damageable
         }
 
         health -= damageAmount;
+        GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
 
         CreateDamage(damageAmount.ToString(), type);
 
@@ -142,10 +150,12 @@ public class Enemy : MonoBehaviour //, Damageable
         switch (type)
         {
             case 1:
+                GameObject.Find("Managers").GetComponent<GameOver>().friends++;
                 Instantiate(EXPPacifist, transform.position, Quaternion.identity);
                 player.GetComponent<Player>().Heal(0.25f);
                 break;
             case 2:
+                GameObject.Find("Managers").GetComponent<GameOver>().foes++;
                 Instantiate(EXPGenocide, transform.position, Quaternion.identity);
                 break;
             default:
