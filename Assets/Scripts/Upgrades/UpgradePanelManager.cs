@@ -15,6 +15,19 @@ public class UpgradePanelManager : MonoBehaviour
     public AudioSource clickSound;
     public GameObject empty;
 
+
+    //Icons im Ui oben links zum freischalten
+    [SerializeField] GameObject feu;
+    [SerializeField] GameObject mes;
+    [SerializeField] GameObject cut;
+    [SerializeField] GameObject lul;
+    [SerializeField] GameObject hea;
+    [SerializeField] GameObject dmg;
+    [SerializeField] GameObject cri;
+    [SerializeField] GameObject spe;
+    [SerializeField] GameObject erf;
+
+
     private void Awake()
     {
         pausemanager = GetComponent<Pausemanager>();
@@ -78,32 +91,33 @@ public class UpgradePanelManager : MonoBehaviour
                 case "hp":
                     GameObject.Find("Buffs").GetComponent<Buffs>().buffHP++;
                     lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffHP;
-
                     GameObject.Find("Player").GetComponent<Player>().maxhp *= (1.1f * lvl);
-
+                    hea.SetActive(true);
                     break;
 
                 case "speed":
                     GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed++;
                     lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
-
                     GameObject.Find("Player").GetComponent<Player>().moveSpeed += lvl * 2;
-
+                    spe.SetActive(true);
                     break;
 
                 case "critchance":
                     GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance++;
                     lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffCritChance;
+                    cri.SetActive(true);
                     break;
 
                 case "basedamage":
                     GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage++;
                     lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffBaseDamage;
+                    dmg.SetActive(true);
                     break;
 
                 case "xpgain":
                     GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain++;
                     lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffXPGain;
+                    erf.SetActive(true);
                     break;
 
                 case "slime":
@@ -125,6 +139,7 @@ public class UpgradePanelManager : MonoBehaviour
                     {
                         cuteness.weaponLVL++;
                         lvl = cuteness.weaponLVL;
+                        
                     }
                     else
                     {
@@ -140,7 +155,7 @@ public class UpgradePanelManager : MonoBehaviour
                     {
                         GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>().cooldown -= 0.3f;
                     }
-
+                    cut.SetActive(true);
                     break;
 
                 case "knifefork":
@@ -155,6 +170,7 @@ public class UpgradePanelManager : MonoBehaviour
                     {
                         knifefork.unlock();
                     }
+                    mes.SetActive(true);
                     break;
             }
         }

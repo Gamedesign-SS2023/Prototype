@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ce25ed9daf22748a14e40ef766f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 6.5
+  damage: 20
   weaponLVL: 0
 --- !u!61 &-7187759243540111069
 BoxCollider2D:

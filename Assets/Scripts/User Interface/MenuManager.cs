@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject Pause;
     //[SerializeField] GameObject gameOverMenu;
     Pausemanager Pausemanager;
 
@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseMenu.activeInHierarchy == false)
+            if (Pause.activeInHierarchy == false)
             {
                 OpenMenu();
             }
@@ -31,13 +31,13 @@ public class MenuManager : MonoBehaviour
     public void CloseMenu()
     {
         Pausemanager.UnPauseGame();
-        pauseMenu.SetActive(false);
+        Pause.SetActive(false);
     }
 
     public void OpenMenu()
     {
         Pausemanager.PauseGame();
-        pauseMenu.SetActive(true);
+        Pause.SetActive(true);
     }
 
     public void BackToMainMenu()

@@ -27,6 +27,11 @@ public class LevelManager : MonoBehaviour
     [Tooltip("GameObject the barrels are supposed to spawn in")]
     public GameObject barrelParent;
 
+    [Header("Kills")]
+    public TextMeshProUGUI kills;
+    public int killsValue = 0;
+
+
     private float timeStamp = 0;
 
     void Start()
@@ -103,6 +108,10 @@ public class LevelManager : MonoBehaviour
     public void setLevelText(int lvl)
     {
         level.text = "LVL" + lvl;
+    }
+    public void setKillsText(int kill)
+    {
+        kills.text = "Kills" + kill;
     }
 
     void barrelSpawn()
