@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject Pause;
     //[SerializeField] GameObject gameOverMenu;
     Pausemanager Pausemanager;
+    public AudioSource clickAudio;
 
     private void Awake()
     {
@@ -42,12 +43,14 @@ public class MenuManager : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        clickAudio.PlayOneShot(clickAudio.clip);
         Pausemanager.UnPauseGame();
         SceneManager.LoadScene("Main Menu");
     }
 
     public void Reload()
     {
+        clickAudio.PlayOneShot(clickAudio.clip);
         Pausemanager.UnPauseGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
