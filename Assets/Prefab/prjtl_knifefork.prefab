@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7085831725258289375}
   - component: {fileID: 7590031085309367937}
-  - component: {fileID: -6174665282171124478}
   - component: {fileID: -7187759243540111069}
   - component: {fileID: 7618831608088567939}
+  - component: {fileID: -6174665282171124478}
   m_Layer: 0
   m_Name: prjtl_knifefork
   m_TagString: MesserGabel
@@ -87,20 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6174665282171124478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4568779773820344668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32ce25ed9daf22748a14e40ef766f35f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  weaponLVL: 0
 --- !u!61 &-7187759243540111069
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +134,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-6174665282171124478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568779773820344668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ce25ed9daf22748a14e40ef766f35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  weaponLVL: 0
