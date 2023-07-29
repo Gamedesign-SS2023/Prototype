@@ -47007,7 +47007,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3507492746987007911, guid: cd8375741841f1a4a9e4717d179cf261, type: 3}
       propertyPath: unlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3507492746987007911, guid: cd8375741841f1a4a9e4717d179cf261, type: 3}
       propertyPath: summonSound

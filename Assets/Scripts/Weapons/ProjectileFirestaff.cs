@@ -11,7 +11,7 @@ public class ProjectileFirestaff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, transform.localScale.x/2);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, 1.5f);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject.tag == "Enemy")
