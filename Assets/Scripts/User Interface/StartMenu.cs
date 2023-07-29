@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    public void LevelAuswahl()
+    {
+        SceneManager.LoadScene("Levelauswahl");
+    }
     public void Tutorial()
     {
         SceneManager.LoadScene("TutorialStage");
@@ -24,4 +28,9 @@ public class StartMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    public void StartGameplayHard()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+    
 }
