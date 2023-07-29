@@ -86,6 +86,8 @@ public class UpgradePanelManager : MonoBehaviour
             GameObject.Find("Player").GetComponent<Player>().Heal(20f);
         } else
         {
+            int req = GameObject.Find("Managers").GetComponent<LevelManager>().req;
+
             switch (upgrades[pressed].id)
             {
                 case "hp":
@@ -144,6 +146,10 @@ public class UpgradePanelManager : MonoBehaviour
                     else
                     {
                         cuteness.unlock();
+
+                        //for any route req changes
+                        if (req == 0) req = 1;
+                        if (req == 2) req = 0;
                     }
 
                     if (lvl == 1)
@@ -156,6 +162,7 @@ public class UpgradePanelManager : MonoBehaviour
                         GameObject.Find("wpn_cuteness").GetComponent<AttackCuteness>().cooldown -= 0.3f;
                     }
                     cut.SetActive(true);
+
                     break;
 
                 case "knifefork":
@@ -169,8 +176,33 @@ public class UpgradePanelManager : MonoBehaviour
                     else
                     {
                         knifefork.unlock();
+
+                        //for any route req changes
+                        if (req == 0) req = 2;
+                        if (req == 1) req = 0;
                     }
                     mes.SetActive(true);
+
+                    break;
+
+                case "firestaff":
+
+                    AttackFirestaff firestaff = GameObject.Find("wpn_firestaff").GetComponent<AttackFirestaff>();
+                    if (firestaff.unlocked)
+                    {
+                        firestaff.weaponLVL++;
+                        lvl = firestaff.weaponLVL;
+                    }
+                    else
+                    {
+                        firestaff.unlock();
+
+                        //for any route req changes
+                        if (req == 0) req = 2;
+                        if (req == 1) req = 0;
+                    }
+                    feu.SetActive(true);
+
                     break;
             }
         }
