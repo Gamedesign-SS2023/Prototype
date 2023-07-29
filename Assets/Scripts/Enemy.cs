@@ -10,9 +10,9 @@ public class Enemy : MonoBehaviour //, Damageable
     //Attribute vom Enemy
     [SerializeField] float health;
     [SerializeField] float maxhealth;
-    [SerializeField] float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] int damage;
-
+    public bool slowed = false;
     GameObject player;
 
     public GameObject damagePre;

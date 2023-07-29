@@ -204,6 +204,21 @@ public class UpgradePanelManager : MonoBehaviour
                     feu.SetActive(true);
 
                     break;
+
+                case "lullaby":
+
+                    AttackLullaby lullaby = GameObject.Find("wpn_lullaby").GetComponent<AttackLullaby>();
+                    if (lullaby.unlocked)
+                    {
+                        lullaby.weaponLVL++;
+                        lvl = lullaby.weaponLVL;
+                    }
+                    else
+                    {
+                        lullaby.unlock();
+                    }
+                    lul.SetActive(true);
+                    break;
             }
         }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1051554551293924423}
   - component: {fileID: 8629936224417800472}
   - component: {fileID: 4126145811939674097}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EXPGenocide
   m_TagString: EXP
   m_Icon: {fileID: 0}

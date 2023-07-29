@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3259063127291090506}
   - component: {fileID: -3718921201146949511}
   - component: {fileID: 1876467496629553094}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: prjtl_slime
   m_TagString: Weapon
   m_Icon: {fileID: 0}
