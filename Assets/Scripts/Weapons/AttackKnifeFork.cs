@@ -9,7 +9,6 @@ public class AttackKnifeFork : WeaponBase
     [SerializeField] GameObject messerGabelPrefab;
     public int weaponLVL;
     public float speed;
-    Vector2 dir;
     Player player;
 
     private void Awake()

@@ -51,9 +51,4 @@ public class ProjectileSlime : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    public float GetDamage()
-    {
-        return damage;
-    }
 }

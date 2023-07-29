@@ -31,6 +31,15 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI kills;
     public int killsValue = 0;
 
+    [Header("Enmity - Stamina")]
+    [Tooltip("What route does the current run qualify as?")]
+    public int req = 0;
+    [Tooltip("currently chosen route")]
+    public int active = 0;
+    [Tooltip("Already acquired enmity route?")]
+    public bool enmity = false;
+    [Tooltip("Already acquired stamina route?")]
+    public bool stamina = false;
 
     private float timeStamp = 0;
     private bool gameOver;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackCuteness : WeaponBase
 {
-    float radius = 1f;
+    //float radius = 1f;
     [SerializeField] GameObject prefab;
     public int weaponLVL;
     public float damage;
@@ -13,7 +13,7 @@ public class AttackCuteness : WeaponBase
 
     private void Start()
     {
-        Destroy(prefab, 0);
+        //Destroy(prefab, 0);
         hitAudio = GameObject.Find("CutenessHit").GetComponent<AudioSource>();
     }
 
@@ -28,10 +28,7 @@ public class AttackCuteness : WeaponBase
         GameObject projectile = Instantiate(prefab, transform.position, transform.rotation);
         projectile.transform.SetParent(gameObject.transform);
 
-        if (weaponLVL >= 1)
-        {
-            radius = 2f;
-        }
+        float radius = (weaponLVL >= 1) ? transform.localScale.x : transform.localScale.x / 2;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         for (int i = 0; i < colliders.Length; i++)
@@ -54,5 +51,13 @@ public class AttackCuteness : WeaponBase
                 Destroy(colliders[i].gameObject);
             }
         }
+
+        StartCoroutine(alive(projectile));
+    }
+
+    IEnumerator alive(GameObject projectile)
+    {
+        yield return new WaitForSeconds(1.3f);
+        Destroy(projectile);
     }
 }
