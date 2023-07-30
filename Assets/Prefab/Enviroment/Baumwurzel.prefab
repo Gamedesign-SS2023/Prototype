@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4573608495965787403}
   - component: {fileID: 3203436384156491059}
   - component: {fileID: -2506720185998410864}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Baumwurzel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

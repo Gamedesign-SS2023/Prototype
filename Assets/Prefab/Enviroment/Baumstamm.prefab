@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1201817749062363643}
   - component: {fileID: 6082777458879100431}
   - component: {fileID: -1345595101481998912}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Baumstamm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

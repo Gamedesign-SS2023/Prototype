@@ -51786,10 +51786,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336ce6231c9dafd4e92fe7eba8a64276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setLevel: 0
   timerText: {fileID: 1269017724}
   levelEnd: 180
-  enemyPrefab: {fileID: 7288106600911067856, guid: 1d639b78395188549b59da425fdd0ace, type: 3}
-  enemyParent: {fileID: 2011975068}
+  enemyAPrefab: {fileID: 7288106600911067856, guid: 1d639b78395188549b59da425fdd0ace, type: 3}
+  enemyBPrefab: {fileID: 7288106600911067856, guid: 718500913f781214e8cc34a89361f5ba, type: 3}
+  enemyCPrefab: {fileID: 7288106600911067856, guid: e78f5bc6af9be954bad8eaee54c4e700, type: 3}
+  enemyDPrefab: {fileID: 7288106600911067856, guid: 329d3d594c01ac64a91e7b59b31baa5e, type: 3}
+  enemiesParent: {fileID: 2011975068}
   expSlider: {fileID: 576142793}
   level: {fileID: 757689944}
   barrelSpawnActive: 1
@@ -51797,6 +51801,10 @@ MonoBehaviour:
   barrelParent: {fileID: 784209580}
   kills: {fileID: 933005581}
   killsValue: 0
+  req: 0
+  active: 0
+  enmity: 0
+  stamina: 0
 --- !u!114 &1185163376
 MonoBehaviour:
   m_ObjectHideFlags: 0

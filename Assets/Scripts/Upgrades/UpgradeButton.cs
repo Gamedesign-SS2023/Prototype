@@ -63,6 +63,26 @@ public class UpgradeButton : MonoBehaviour
                     lvl = GameObject.Find("wpn_knifefork").GetComponent<AttackKnifeFork>().weaponLVL;
                 }
                 break;
+            case "firestaff":
+                if (!GameObject.Find("wpn_firestaff").GetComponent<AttackFirestaff>().unlocked)
+                {
+                    lvl = 4;
+                }
+                else
+                {
+                    lvl = GameObject.Find("wpn_firestaff").GetComponent<AttackFirestaff>().weaponLVL;
+                }
+                break;
+            case "lullaby":
+                if (!GameObject.Find("wpn_lullaby").GetComponent<AttackLullaby>().unlocked)
+                {
+                    lvl = 4;
+                }
+                else
+                {
+                    lvl = GameObject.Find("wpn_lullaby").GetComponent<AttackLullaby>().weaponLVL;
+                }
+                break;
         }
 
         if (upgradeData.type == "buff")

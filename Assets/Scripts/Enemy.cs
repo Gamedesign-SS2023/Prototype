@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour //, Damageable
     public GameObject EXPPacifist;
 
     private AudioSource deathAudio;
+    private float attacking = 0;
 
     private void Awake()
     {
@@ -53,6 +54,13 @@ public class Enemy : MonoBehaviour //, Damageable
             GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f);
         }
     }
+    void Update()
+    {
+        if (attacking > 0)
+        {
+            attacking -= Time.deltaTime;
+        }
+    }
 
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -64,7 +72,11 @@ public class Enemy : MonoBehaviour //, Damageable
                 player=targetObject.GetComponent<Player>();
             }
             */
-            player.GetComponent<Player>().TakeDamage(damage);
+            if(attacking <= 0)
+            {
+                player.GetComponent<Player>().TakeDamage(damage);
+                attacking = 0.25f;
+            }
         }
     }
 
@@ -73,9 +85,9 @@ public class Enemy : MonoBehaviour //, Damageable
         float critChance = 10;
 
         //boosts based on type
-        if(type == 1)
+        if(GameObject.Find("Managers").GetComponent<LevelManager>().active == 2)
         {
-            damageAmount++;
+            damageAmount = damageAmount * 2;
         }
 
         //boosts based on buffs
@@ -94,6 +106,10 @@ public class Enemy : MonoBehaviour //, Damageable
         {
             damageAmount = damageAmount + (damageAmount * 0.5f);
         }
+
+        //only use damage actually inflicted
+        float unaltered = health - damageAmount;
+        if (unaltered < 0) damageAmount += unaltered;
 
         health -= damageAmount;
         GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
@@ -152,7 +168,7 @@ public class Enemy : MonoBehaviour //, Damageable
             case 1:
                 GameObject.Find("Managers").GetComponent<GameOver>().friends++;
                 Instantiate(EXPPacifist, transform.position, Quaternion.identity);
-                player.GetComponent<Player>().Heal(0.25f);
+                player.GetComponent<Player>().Heal(5f);
                 break;
             case 2:
                 GameObject.Find("Managers").GetComponent<GameOver>().foes++;

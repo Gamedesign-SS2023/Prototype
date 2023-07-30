@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6621998015182207899}
   - component: {fileID: 4587014356737255500}
   - component: {fileID: 2795778818078400084}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Brunnen0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
