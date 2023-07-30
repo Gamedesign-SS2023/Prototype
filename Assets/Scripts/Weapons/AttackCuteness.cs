@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class AttackCuteness : WeaponBase
@@ -28,7 +27,7 @@ public class AttackCuteness : WeaponBase
         GameObject projectile = Instantiate(prefab, transform.position, transform.rotation);
         projectile.transform.SetParent(gameObject.transform);
 
-        float radius = (weaponLVL >= 1) ? transform.localScale.x : transform.localScale.x / 2;
+        float radius = (weaponLVL >= 1) ? 2f : 1f;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         for (int i = 0; i < colliders.Length; i++)
