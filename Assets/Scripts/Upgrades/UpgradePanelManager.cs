@@ -14,9 +14,10 @@ public class UpgradePanelManager : MonoBehaviour
     public AudioSource popUpSound;
     public AudioSource clickSound;
     public GameObject empty;
-
+    public AudioSource regClickAudio;
 
     //Icons im Ui oben links zum freischalten
+    [Header("Icons")]
     [SerializeField] GameObject feu;
     [SerializeField] GameObject mes;
     [SerializeField] GameObject cut;
@@ -38,6 +39,13 @@ public class UpgradePanelManager : MonoBehaviour
         var rnd = new System.Random();
         var shuffledList = listToShuffle.OrderBy(_ => rnd.Next()).ToList();
         return shuffledList;
+    }
+
+    public void ClosePanel()
+    {
+        regClickAudio.PlayOneShot(regClickAudio.clip);
+        pausemanager.UnPauseGame();
+        panel.SetActive(false);
     }
 
     public void OpenPanel()
