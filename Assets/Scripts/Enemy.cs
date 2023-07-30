@@ -81,22 +81,22 @@ public class Enemy : MonoBehaviour //, Damageable
     public void TakeDamage(float damageAmount, int type)
     {
         float critChance = 10;
-
+        /*
         //boosts based on type
         if(GameObject.Find("Managers").GetComponent<LevelManager>().active == 2)
         {
             damageAmount = damageAmount * 2;
         }
-
+        */
         //boosts based on buffs
         Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
         if (buffs.buffBaseDamage != 0)
         {
-            damageAmount = damageAmount + (buffs.buffXPGain*5);
+            damageAmount = damageAmount + (buffs.buffBaseDamage*5);
         }
         if (buffs.buffCritChance != 0)
         {
-            critChance = critChance + (buffs.buffCritChance * 5);
+            critChance = critChance + (buffs.buffCritChance * 10);
         }
 
         //Crit Chance
@@ -108,10 +108,10 @@ public class Enemy : MonoBehaviour //, Damageable
         //if genocide, add unaltered damage to score
         if (type == 2) GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
 
-        //only use damage actually inflicted
+        /*//only use damage actually inflicted
         float unaltered = health - damageAmount;
         if (unaltered < 0) damageAmount += unaltered;
-
+        */
         health -= damageAmount;
         if(type != 2) GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
 

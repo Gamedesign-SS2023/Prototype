@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88666f9a7fd3824fa94a119c5eba8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 50
   weaponType: Genocide
   weaponLVL: 0
   spawnPos: {x: 0, y: 0, z: 0}
