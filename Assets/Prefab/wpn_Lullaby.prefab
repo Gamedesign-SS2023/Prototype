@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8078609599762945790}
   - component: {fileID: 1478180918725088741}
   m_Layer: 0
-  m_Name: wpn_Lullaby
+  m_Name: wpn_lullaby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

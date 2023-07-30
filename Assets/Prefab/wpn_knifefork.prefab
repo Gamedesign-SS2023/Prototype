@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1920540345709455427}
-  - component: {fileID: 1920540345709455426}
+  - component: {fileID: 4095069820907616613}
   m_Layer: 0
   m_Name: wpn_knifefork
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1920540345709455426
+--- !u!114 &4095069820907616613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   unlocked: 0
-  cooldown: 0
+  cooldown: 1
   throwingsound: {fileID: 0}
   messerGabelPrefab: {fileID: 4568779773820344668, guid: f5282d16f05e9c24086c7b3f27b60254, type: 3}
   weaponLVL: 0
-  speed: 0
+  speed: 8

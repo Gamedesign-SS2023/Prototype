@@ -8,14 +8,20 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     [Header("Timer")]
+    public int setLevel;
+
+    [Header("Timer")]
     public TextMeshProUGUI timerText;
     [Tooltip("Input needs to be in SECONDS")]
     public int levelEnd;
 
     [Header("Enemies")]
-    public GameObject enemyPrefab;
+    public GameObject enemyAPrefab;
+    public GameObject enemyBPrefab;
+    public GameObject enemyCPrefab;
+    public GameObject enemyDPrefab;
     [Tooltip("GameObject the enemies are supposed to spawn in")]
-    public GameObject enemyParent;
+    public GameObject enemiesParent;
 
     [Header("EXP")]
     public Slider expSlider;
@@ -58,7 +64,16 @@ public class LevelManager : MonoBehaviour
         timeStamp += Time.deltaTime;
 
         setTimer(timeStamp);
-        setLevel0(timeStamp);
+
+        switch(setLevel)
+        {
+            case 1:
+                setLevel1(timeStamp);
+                break;
+            default:
+                setLevel0(timeStamp);
+                break;
+        }
 
         if (timeStamp >= levelEnd)
         {
@@ -79,9 +94,84 @@ public class LevelManager : MonoBehaviour
 
     void setLevel0(float timeStamp)
     {
-        if (timeStamp >= 0 && timeStamp < 60) enemyWave(enemyPrefab, 10);
-        if (timeStamp >= 60 && timeStamp < 120) enemyWave(enemyPrefab, 50);
-        if (timeStamp >= 120 && timeStamp < 180) enemyWave(enemyPrefab, 100);
+        if (timeStamp >= 0 && timeStamp < 60) enemyWave(enemyAPrefab, 10);
+        if (timeStamp >= 60 && timeStamp < 120) enemyWave(enemyAPrefab, 50);
+        if (timeStamp >= 120 && timeStamp < 180) enemyWave(enemyAPrefab, 100);
+    }
+
+    void setLevel1(float timeStamp)
+    {
+        if (timeStamp >= 0 && timeStamp < 10) enemyWave(enemyAPrefab, 5);
+        if (timeStamp >= 10 && timeStamp < 30) enemyWave(enemyAPrefab, 20);
+        if (timeStamp >= 30 && timeStamp < 45)
+        {
+            enemyWave(enemyAPrefab, 20);
+            enemyWave(enemyBPrefab, 10);
+        }
+        if (timeStamp >= 45 && timeStamp < 60)
+        {
+            enemyWave(enemyAPrefab, 5);
+            enemyWave(enemyBPrefab, 25);
+        }
+        if (timeStamp >= 60 && timeStamp < 80)
+        {
+            enemyWave(enemyAPrefab, 20);
+            enemyWave(enemyBPrefab, 10);
+        }
+        if (timeStamp >= 80 && timeStamp < 120) enemyWave(enemyAPrefab, 25);
+        if (timeStamp >= 120 && timeStamp < 150) enemyWave(enemyCPrefab, 25);
+        if (timeStamp >= 150 && timeStamp < 180)
+        {
+            enemyWave(enemyCPrefab, 20);
+            enemyWave(enemyBPrefab, 30);
+            enemyWave(enemyAPrefab, 10);
+        }
+        if (timeStamp >= 180 && timeStamp < 240)
+        {
+            enemyWave(enemyBPrefab, 5);
+            enemyWave(enemyAPrefab, 15);
+        }
+        if (timeStamp >= 240 && timeStamp < 300)
+        {
+            enemyWave(enemyDPrefab, 15);
+            enemyWave(enemyBPrefab, 15);
+        }
+        if (timeStamp >= 300 && timeStamp < 330)
+        {
+            enemyWave(enemyDPrefab, 30);
+            enemyWave(enemyAPrefab, 20);
+        }
+        if (timeStamp >= 330 && timeStamp < 360)
+        {
+            enemyWave(enemyDPrefab, 10);
+            enemyWave(enemyBPrefab, 20);
+            enemyWave(enemyAPrefab, 10);
+        }
+        if (timeStamp >= 360 && timeStamp < 390)
+        {
+            enemyWave(enemyDPrefab, 15);
+            enemyWave(enemyBPrefab, 30);
+        }
+        if (timeStamp >= 390 && timeStamp < 420)
+        {
+            enemyWave(enemyBPrefab, 20);
+            enemyWave(enemyCPrefab, 20);
+        }
+        if (timeStamp >= 420 && timeStamp < 450)
+        {
+            enemyWave(enemyBPrefab, 10);
+            enemyWave(enemyCPrefab, 15);
+            enemyWave(enemyAPrefab, 15);
+        }
+        if (timeStamp >= 450 && timeStamp < 480)
+        {
+            enemyWave(enemyDPrefab, 10);
+            enemyWave(enemyCPrefab, 10);
+            enemyWave(enemyBPrefab, 10);
+            enemyWave(enemyAPrefab, 10);
+        }
+        if (timeStamp >= 480 && timeStamp < 580) enemyWave(enemyAPrefab, 100);
+        if (timeStamp >= 580 && timeStamp < 600) { /* STOP SPAWNING */ };
     }
 
     void enemyWave(GameObject enemy, int amountEnemies)
@@ -110,7 +200,7 @@ public class LevelManager : MonoBehaviour
             }
 
             GameObject spawn = Instantiate(enemy, spawnPos, Quaternion.identity);
-            spawn.transform.SetParent(enemyParent.transform);
+            spawn.transform.SetParent(enemiesParent.transform);
         }
     }
 
