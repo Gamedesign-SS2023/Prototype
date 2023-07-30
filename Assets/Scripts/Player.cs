@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lvlmanager.updateExperienceBar(EXP, 10);
+        lvlmanager.updateExperienceBar(EXP, 5);
         lvlmanager.setLevelText(level);
         lvlmanager.setKillsText(0);
         hp = maxhp;
@@ -155,6 +155,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        lvlmanager.updateExperienceBar(EXP, 10*level);
+        lvlmanager.updateExperienceBar(EXP, 5*level);
     }
 }
