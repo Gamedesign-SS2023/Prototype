@@ -100,7 +100,7 @@ public class UpgradePanelManager : MonoBehaviour
                 case "speed":
                     GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed++;
                     lvl = GameObject.Find("Buffs").GetComponent<Buffs>().buffSpeed;
-                    GameObject.Find("Player").GetComponent<Player>().moveSpeed += lvl * 2;
+                    GameObject.Find("Player").GetComponent<Player>().moveSpeed++;
                     spe.SetActive(true);
                     break;
 
@@ -216,6 +216,10 @@ public class UpgradePanelManager : MonoBehaviour
                     else
                     {
                         lullaby.unlock();
+
+                        //for any route req changes
+                        if (req == 0) req = 1;
+                        if (req == 2) req = 0;
                     }
                     lul.SetActive(true);
                     break;

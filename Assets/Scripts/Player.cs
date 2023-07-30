@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float moveSpeed = 3f;
 
     public int level = 1;
-    public int EXP = 0;
+    public float EXP = 0;
     [SerializeField] HpBar hpbar;
 
     [Header("Audio")]
@@ -148,12 +148,13 @@ public class Player : MonoBehaviour
             Buffs buffs = GameObject.Find("Buffs").GetComponent<Buffs>();
             if (buffs.buffXPGain != 0)
             {
-                EXP += 1 + buffs.buffXPGain;
+                EXP += 0.25f + buffs.buffXPGain;
             } else
             {
-                EXP++;
+                EXP += 0.5f;
             }
         }
-        lvlmanager.updateExperienceBar(EXP, level*10);
+
+        lvlmanager.updateExperienceBar(EXP, 10*level);
     }
 }

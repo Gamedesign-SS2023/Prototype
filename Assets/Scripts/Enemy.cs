@@ -30,9 +30,7 @@ public class Enemy : MonoBehaviour //, Damageable
 
     private void Start()
     {
-        maxhealth = player.GetComponent<Player>().level * maxhealth;
         health = maxhealth;
-
         deathAudio = GameObject.Find("EnemyDeath").GetComponent<AudioSource>();
     }
     private void FixedUpdate()
@@ -107,12 +105,15 @@ public class Enemy : MonoBehaviour //, Damageable
             damageAmount = damageAmount + (damageAmount * 0.5f);
         }
 
+        //if genocide, add unaltered damage to score
+        if (type == 2) GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
+
         //only use damage actually inflicted
         float unaltered = health - damageAmount;
         if (unaltered < 0) damageAmount += unaltered;
 
         health -= damageAmount;
-        GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
+        if(type != 2) GameObject.Find("Managers").GetComponent<GameOver>().highScore += damageAmount;
 
         CreateDamage(damageAmount.ToString(), type);
 

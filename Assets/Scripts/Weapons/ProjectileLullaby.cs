@@ -19,7 +19,7 @@ public class ProjectileLullaby : MonoBehaviour
             
             if (weaponLVL >= 3)
             {
-                enemy.TakeDamage(damage * 2, 1);
+                enemy.TakeDamage(damage++, 1);
                 if (!enemy.slowed)
                 {
                     enemy.slowed = true;
@@ -29,7 +29,7 @@ public class ProjectileLullaby : MonoBehaviour
             }
             else if(weaponLVL >= 1)
             {
-                enemy.TakeDamage(damage * 2, 1);
+                enemy.TakeDamage(damage++, 1);
                 if (!enemy.slowed)
                 {
                     enemy.slowed = true;

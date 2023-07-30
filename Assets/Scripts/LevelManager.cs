@@ -101,7 +101,7 @@ public class LevelManager : MonoBehaviour
 
     void setLevel1(float timeStamp)
     {
-        if (timeStamp >= 0 && timeStamp < 10) enemyWave(enemyAPrefab, 5);
+        if (timeStamp >= 0 && timeStamp < 10) enemyWave(enemyAPrefab, 10);
         if (timeStamp >= 10 && timeStamp < 30) enemyWave(enemyAPrefab, 20);
         if (timeStamp >= 30 && timeStamp < 45)
         {
@@ -170,13 +170,24 @@ public class LevelManager : MonoBehaviour
             enemyWave(enemyBPrefab, 10);
             enemyWave(enemyAPrefab, 10);
         }
-        if (timeStamp >= 480 && timeStamp < 580) enemyWave(enemyAPrefab, 100);
+        if (timeStamp >= 480 && timeStamp < 580) enemyWave(enemyAPrefab, 500);
         if (timeStamp >= 580 && timeStamp < 600) { /* STOP SPAWNING */ };
     }
 
     void enemyWave(GameObject enemy, int amountEnemies)
     {
-        amountEnemies = amountEnemies - GameObject.FindGameObjectsWithTag("Enemy").Length;
+        //filter gameobject list for the right enemy
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> enemyToSpawn = new List<GameObject>();
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if(enemies[i].name.Contains(enemy.name))
+            {
+                enemyToSpawn.Add(enemies[i]);
+            }
+        }
+
+        amountEnemies = amountEnemies - enemyToSpawn.Count;
         
         for (int i = 0; i < amountEnemies; i++)
         {
@@ -204,7 +215,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void updateExperienceBar(int currentEXP, int nextLevelUp)
+    public void updateExperienceBar(float currentEXP, int nextLevelUp)
     {
         expSlider.maxValue = nextLevelUp;
         expSlider.value = currentEXP;
