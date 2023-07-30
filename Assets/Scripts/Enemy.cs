@@ -167,14 +167,17 @@ public class Enemy : MonoBehaviour //, Damageable
         {
             case 1:
                 GameObject.Find("Managers").GetComponent<GameOver>().friends++;
+                GameObject.Find("ScoreText").GetComponent<score>().kills++;
                 Instantiate(EXPPacifist, transform.position, Quaternion.identity);
                 player.GetComponent<Player>().Heal(5f);
                 break;
             case 2:
                 GameObject.Find("Managers").GetComponent<GameOver>().foes++;
+                GameObject.Find("ScoreText").GetComponent<score>().kills++;
                 Instantiate(EXPGenocide, transform.position, Quaternion.identity);
                 break;
             default:
+                GameObject.Find("ScoreText").GetComponent<score>().kills++;
                 Instantiate(EXPPrefab, transform.position, Quaternion.identity);
                 break;
         }
