@@ -19,7 +19,7 @@ public class AttackLullaby : WeaponBase
 
     public override void Attack()
     {
-
+        throwingsound.PlayOneShot(throwingsound.clip);
         if (weaponLVL >=2)
         {
             shootProjectile(false);
