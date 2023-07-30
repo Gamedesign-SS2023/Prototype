@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     public AudioSource gameOverAudio;
     public AudioSource victoryAudio;
     public TextMeshProUGUI title;
+    public GameObject ending;
 
     [Header("Statistics")]
     public TextMeshProUGUI statistics;
@@ -17,13 +18,24 @@ public class GameOver : MonoBehaviour
     public int friends = 0;
     public int foes = 0;
 
+    [Header("Endings")]
+    public Sprite genocide;
+    public Sprite pacifist;
+    public Sprite gameover;
+    public Sprite victory;
+
     public void GameOverPanel(bool death)
     {
         AudioSource popUpSound = death ? gameOverAudio : victoryAudio;
         popUpSound.Play();
 
         title.text = death ? "Game Over" : "Glückwunsch!";
-        statistics.text = "High Score: " + highScore + " | Freunde: " + friends + " | Futter: " + foes;
+        statistics.text = "High Score: " + highScore + "\nFreunde: " + friends + "\nFutter: " + foes;
+        ending.GetComponent<Image>().sprite = death ? gameover : victory;
+        if (GetComponent<LevelManager>().req != 0)
+        {
+            ending.GetComponent<Image>().sprite = (GetComponent<LevelManager>().req == 1) ? pacifist : genocide;
+        }
 
         GetComponent<Pausemanager>().PauseGame();
 

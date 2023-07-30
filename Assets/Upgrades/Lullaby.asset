@@ -17,6 +17,6 @@ MonoBehaviour:
   upgradeName: Lullaby
   icon: {fileID: 21300000, guid: 5848a091ec0a87d4ea6edcd0cd210da7, type: 3}
   description: Verlangsame die Menschen um 33%
-  descLVL1: Verlangsamung steigt auf 50 % und der Schaden um 5
+  descLVL1: Verlangsamung steigt auf 50 % und der Schaden steigt um 1.
   descLVL2: "Schie\xDFt ein weiteres Projektil in die entgegengesetzte Richtung."
   descLVL3: Verlangsame getroffene um 75 %
